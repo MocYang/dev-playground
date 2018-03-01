@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack --watch --config=webpack.config.js"
+    "dev": "webpack --mode development -w --color --progress --hide-modules --config=webpack.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "clean-webpack-plugin": "^0.1.18",
     "html-webpack-plugin": "^3.0.0",
     "immutable": "^3.8.2",
-    "webpack": "^4.0.1"
+    "webpack": "^4.0.1",
+    "webpack-dev-server": "^3.1.0"
+  },
+  "dependencies": {
+    "webpack-cli": "^2.0.9"
   }
 }
