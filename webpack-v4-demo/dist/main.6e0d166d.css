@@ -1,0 +1,7 @@
+body {
+  display: flex; }
+
+div {
+  margin: auto;
+  font-size: 24px;
+  text-align: center; }
