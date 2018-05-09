@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG 图标</title>
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<section class="svg-wrapper">
+  <div class="title">
+    <h2 class="h2">svg 图标</h2>
+    <div class="br"></div>
+  </div>
+  <section class="svg__content">
+    <section class="svg__item">
+      <h3 class="h3">SVG图标直接作为img元素引入</h3>
+      <div class="svg clearfix">
+        <img src="../assets/images/iconmonstr-computer-12.svg" alt="" class="img">
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <p>note:</p>
+        <p>在放大或缩小SVG图标时，为了保持它的比例，你只能设置width和height中的一个值。当仅为其中一个属性设置值时，浏览器将沿着另一个轴相应地缩放SVG图标，以使SVG图标保持其宽高比。</p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">使用SVG元素创建图标</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 300 300"
+          width="300"
+          height="300"
+          x="0"
+          y="0"
+        >
+          <circle
+            cx="64"
+            cy="64"
+            r="56"
+            style="fill: #0cf; stroke: #cc0000"
+          ></circle>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 0 128 128"
+        >
+          <circle cx="64" cy="64" r="64" style="fill: #00ccff;"></circle>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+  </section>
+</section>
+
+<script></script>
+</body>
+</html>

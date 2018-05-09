@@ -6,14 +6,118 @@
 html,
 body {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: auto;
   position: relative;
+}
+
+.clearfix {
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+
+.br {
+  width: 100%;
+  height: 1px;
+  background: rgba(40, 40, 40, 0.88);
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  text-align: center;
+}
+
+iframe {
+  border: none;
+  outline: none;
+}
+
+.h1 {
+  font-size: 48px;
+}
+
+.h2 {
+  font-size: 42px;
+}
+
+.h3 {
+  font-size: 36px;
+}
+
+.h4 {
+  font-size: 28px;
+}
+
+.h5 {
+  font-size: 20px;
+}
+
+.h6 {
+  font-size: 18px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  font-size: 0;
 }
 
 .svg-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
   padding: 2%;
   background: #f9f9f9;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  width: 100%;
+  height: 80px;
+}
+
+.svg__content {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.svg__item {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.svg__item:after {
+
+}
+
+
+.svg {
+  background: #fff;
+}
+
+.svg__description {
+
+}
+
+pre {
+  overflow: auto;
+  word-wrap: normal;
+  margin: 0;
+  padding: .85em 1em;
+  margin-bottom: 1.275em;
+  background: #f7f7f7;
 }
