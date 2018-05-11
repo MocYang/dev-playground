@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>4 g element</title>
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<section class="svg-wrapper">
+  <header class="title">
+    <h2 class="h2">svg g element</h2>
+    <div class="br"></div>
+  </header>
+  <main class="svg__content">
+    <section class="svg__item">
+      <h3 class="h3"></h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 300 300"
+          width="300"
+          height="300"
+          x="0"
+          y="0"
+        >
+          <g transform="rotate(20 150 150)" stroke-width="2">
+            <line x1="10" y1="10" x2="100" y2="50"
+                  style="stroke: red"
+            ></line>
+
+            <rect x="10" y="50" width="50" height="50"
+                  style="fill: #c00"
+            ></rect>
+
+            <text x="10" y="120"
+                  style="stroke: #333; fill: #090"
+            >some text
+            </text>
+          </g>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">g 没有x, y属性</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 300 300"
+          width="300"
+          height="300"
+          x="0"
+          y="0"
+        >
+          <svg x="100" y="50">
+            <g transform="rotate(10 100 100)" style="stroke: #c00; fill: #cc0">
+              <text x="00" y="20">some text</text>
+              <rect x="00" y="50" width="50" height="50"></rect>
+            </g>
+          </svg>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">g 没有x, y属性</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 300 300"
+          width="300"
+          height="300"
+          x="0"
+          y="0"
+        >
+
+          <g transform="rotate(10 100 100)" style="stroke: #c00; fill: #cc0">
+            <svg x="100" y="50">
+              <text x="00" y="20">some text</text>
+              <rect x="00" y="50" width="50" height="50"></rect>
+            </svg>
+          </g>
+
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+  </main>
+</section>
+
+<script></script>
+</body>
+</html>
