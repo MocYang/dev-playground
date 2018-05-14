@@ -17,7 +17,7 @@ const cleanOptions = {
 
   // allow the plugin to clean folders outside of the webpack root.
   // Default: false - don't allow clean folder outside of the webpack root
-  allowExternal: false,
+  allowExternal: false
 }
 
 module.exports = {
@@ -66,6 +66,6 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html'
     }),
-    new WebpackMd5Hash(),
+    new WebpackMd5Hash()
   ]
 }

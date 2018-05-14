@@ -106,10 +106,12 @@
             this.showAllTodos()
             this.filter = 'all'
             break
+
           case 1:
             this.showActiveTodos()
             this.filter = 'active'
             break
+
           case 2:
             this.showUnActiveTodos()
             this.filter = 'not active'

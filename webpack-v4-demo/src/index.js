@@ -1,1 +1,4 @@
-import "./scss/style.scss"
+import './scss/style.scss'
+
+let a = '1'
+console.log(a)
