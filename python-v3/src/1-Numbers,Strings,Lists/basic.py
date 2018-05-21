@@ -36,7 +36,11 @@ print(num5)
 # 字符串可以使用下标来获取单个字符。如：str = 'hello' str[0]
 # 索引可以是负数，此时字符串从右向左取值, 负数的索引从-1开始。
 # 获取字符串的长度： str.__len__()
-# 字符串截取：str[start:end], 符合包左不包右的原则
+# 字符串截取：str[start:end], 符合包左不包右的原则.start 默认为0，end默认为字符串的长度。
+# 于是有：str === str[:i] + str[i:]总是成立。
+# 如果索引大于字符串的长度，会抛出IndexError: string index out of range. （获取单个字符时），
+# python字符串是immutable的，因此，尝试重新赋值给字符串子串或字符会报错。
+# 内置的len（）方法，返回字符串的长度。
 
 str1 = 'string1'
 str2 = "string2"
@@ -56,6 +60,7 @@ str7 = '''\
 str8 = 'na' + 'me'  # 'name'
 str9 = 3 * 'na'     # 'nanana'
 str10 = 'na' * 3    # 'nanana'
+str10 = 'na2222'
 print(str1)
 print(str2)
 print(str3)
@@ -73,7 +78,8 @@ print(str11[str11.__len__() - 1])
 print(str11[0:4])
 print(str11[:4])
 print(str11[5:])
-
+print(len(str10))
+print(len(str11))
 
 
 
