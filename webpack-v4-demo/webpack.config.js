@@ -12,7 +12,7 @@ const pathsToClean = [
 const cleanOptions = {
   root: path.resolve(__dirname),
   verbose: false,
-  watch: true,
+  watch: false,
   exclude: [],
 
   // allow the plugin to clean folders outside of the webpack root.
