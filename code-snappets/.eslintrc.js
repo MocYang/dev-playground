@@ -9,15 +9,12 @@ module.exports = {
     browser: true,
   },
   extends: [
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential',
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
     'standard'
   ],
   // required to lint *.vue files
   plugins: [
-    'vue'
+
   ],
   // add your custom rules here
   rules: {
@@ -31,7 +28,7 @@ module.exports = {
     'indent': 'off',
     'space-before-function-paren': ['error', 'always'],
     'space-before-blocks': ['error', {'functions': 'always', 'keywords': 'always', 'classes': 'always'}],
-    'function-paren-newline': ['error', {'minItems': 5}],
+    'function-paren-newline': ['error', {'minItems': 7}],
     // 'arrow-parens': ['error', 'as-needed'],
     'no-confusing-arrow': ['error', {'allowParens': true}],
     'no-useless-constructor': 'error',

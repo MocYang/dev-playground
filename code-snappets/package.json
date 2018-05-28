@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch --hide-modules",
+    "dev": "webpack-dev-server --mode development --hide-modules --inline",
     "build": "webpack --mode production",
     "standard": "standard --fix --verbose",
     "precommit": "lint-staged"
@@ -13,9 +13,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^8.5.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-istanbul": "^4.1.6",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
