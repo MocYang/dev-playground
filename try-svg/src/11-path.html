@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>11 path</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<section class="svg-wrapper">
+  <header class="title">
+    <h2 class="h2">path</h2>
+    <div class="br"></div>
+  </header>
+  <main class="svg__content">
+    <section class="svg__item">
+      <h3 class="h3">basic</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <path
+            d="
+              M50,50
+              A30,30 0 0,1 35,20
+              L100,100
+              M110,110
+              L100,0"
+            style="stroke:#660000; fill:none;" />
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">线条</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <path
+            d="
+              M50,50
+              L50,150
+             "
+            style="stroke:#660000; fill:none;" />
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4>L和l区别：</h4>
+        <p>L定义的绝对定位的点，l定义的是相对M虚拟画笔的偏移定位点。</p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">弧线</h3>
+      <h4>A和a可以绘制圆弧</h4>
+      <p>参数：Arx,ry x-axis-rotation large-arc-flag,sweep-flag</p>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 400"
+          width="800"
+          height="400"
+          x="0"
+          y="0"
+        >
+          <path
+            d="M50,50
+              A30,50 0 0,1 100,100
+            "
+            style="stroke: #600; fill: none;"
+          />
+
+          <path d="M40,20 A30,30 0 0,0 60,70" style="stroke: #cccc00; stroke-width:2; fill:none;"/>
+
+          <path d="M40,20 A30,30 0 1,0 60,70" style="stroke: #ff0000; stroke-width:2; fill:none;"/>
+
+          <path d="M40,20 A30,30 0 1,1 60,70" style="stroke: #00ff00; stroke-width:2; fill:none;"/>
+
+          <path d="M40,20 A30,30 0 0,1 60,70" style="stroke: #0000ff; stroke-width:2; fill:none;"/>
+
+          <path d="M300,50 A40,40 0 0,0 360,100"  style="stroke: #0000ff; stroke-width:2; fill:none;" />
+          <path d="M300,50 A40,40 0 1,0 360,100"  style="stroke: #f00; stroke-width:2; fill:none;" />
+          <path d="M300,50 A40,40 0 1,1 360,100"  style="stroke: #f00; stroke-width:2; fill:none;" />
+          <path d="M300,50 A40,40 0 0,1 360,100"  style="stroke: #0000ff; stroke-width:2; fill:none;" />
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">二次贝塞尔曲线</h3>
+      <h4>Q和q</h4>
+      <p>Q控制点x,控制点y 终点x,终点y</p>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <path
+            d="M20,20 Q10,200 180, 150"
+            style="stroke: #f00; fill: none;"
+          />
+
+          <path
+            d="M200,20 Q350,-20 450, 150"
+            style="stroke: #f00; fill: none;"
+          />
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">title</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">title</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">title</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">title</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">title</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">title</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">title</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+  </main>
+</section>
+
+<script></script>
+</body>
+</html>
