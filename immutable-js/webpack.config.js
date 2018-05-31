@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'output index.html'
+      title: 'output 1-svg-use.html'
     }),
     new CleanWebpackPlugin(['dist'])
   ],

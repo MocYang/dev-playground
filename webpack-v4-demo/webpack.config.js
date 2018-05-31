@@ -63,7 +63,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: './src/index.html',
+      template: './src/1-svg-use.html',
       filename: 'index.html'
     }),
     new WebpackMd5Hash()
