@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>13 text</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<section class="svg-wrapper">
+  <header class="title">
+    <h2 class="h2">text</h2>
+    <div class="br"></div>
+  </header>
+  <main class="svg__content">
+    <section class="svg__item">
+      <h3 class="h3">basic</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="20" y="10">text basic</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">定位文本</h3>
+      <p>x定义了文本的左侧边缘，y定义了文本的地步边缘</p>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="20" y="10">text basic</text>
+          <line x1="100" y1="10" x2="200" y2="10" style="stroke: #f00;"></line>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">文本的锚点</h3>
+      <p>css 属性：text-anchor,可以设置文本的锚点.有三个值：</p>
+      <ul>
+        <li>start</li>
+        <li>middle</li>
+        <li>end</li>
+      </ul>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="120" y="10" style="text-anchor: start">text basic</text>
+          <text x="120" y="40" style="text-anchor: middle">text basic</text>
+          <text x="120" y="70" style="text-anchor: end">text basic</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">描边和填充</h3>
+      <p>只指定描边，文本只会显示其轮廓。如果只指定填充，文本看起来像正常呈现</p>
+      <div class="svg clearfix">
+        <style>
+          .text3 {
+            fill-opacity: 0.33;
+          }
+        </style>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="120" y="50" style="font-size: 48px; stroke: #c00; fill: none;">text basic</text>
+          <text x="120" y="120" style="font-size: 48px; stroke: none; fill: #c00;">text basic</text>
+          <text class="text3" x="120" y="180" style="font-size: 48px; stroke: #c00; fill: #333;">text basic</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">字母间距和字距，单词间距</h3>
+      <p>css属性：</p>
+      <ul>
+        <li>letter-spacing: 字母间距</li>
+        <li>kerning: 字形间距</li>
+        <li>word-spacing: 单词间距</li>
+      </ul>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="20" y="10" style="">text normal</text>
+          <text x="20" y="40" style="kerning: 2em">text kerning: 2。完全不知道兼容性</text>
+          <text x="20" y="70" style="letter-spacing: 2em">text letter-spacing: 2</text>
+          <text x="20" y="100" style="word-spacing: 2em">text word-spacing: 2</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">旋转</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="100" y="150" transform="rotate(30 100 150)">text basic</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">basic</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="20" y="10">text basic</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">basic</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="20" y="10">text basic</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">basic</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="20" y="10">text basic</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">basic</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="20" y="10">text basic</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="svg__item">
+      <h3 class="h3">basic</h3>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <text x="20" y="10">text basic</text>
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+  </main>
+</section>
+
+<script></script>
+</body>
+</html>
