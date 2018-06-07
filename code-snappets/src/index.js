@@ -1,1 +1,2 @@
-import './adapter.js'
+// import './adapter'
+import './array'

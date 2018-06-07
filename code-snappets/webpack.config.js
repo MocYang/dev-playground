@@ -20,7 +20,13 @@ const cleanOptions = {
   allowExternal: false
 }
 
+
+function resolve (dir) {
+  return path.join(__dirname, '.', dir)
+}
+
 module.exports = {
+  context: path.resolve(__dirname, './'),
   entry: {
     main: './src/index.js'
   },
@@ -53,6 +59,14 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': resolve('src'),
+      'static': resolve('static'),
+      'assets': resolve('src/assets')
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
     new ExtractTextPlugin({
@@ -63,9 +77,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: './src/1-svg-use.html',
-      filename: 'index.html',
-      chunks: 'all'
+      template: 'index.html',
+      filename: 'index.html'
     }),
     new WebpackMd5Hash()
   ]
