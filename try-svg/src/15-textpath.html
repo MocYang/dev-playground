@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>14-tspan</title>
+  <title>15 textpath</title>
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 <section class="svg-wrapper">
   <header class="title">
-    <h2 class="h2">tspan</h2>
+    <h2 class="h2">textpath</h2>
     <div class="br"></div>
   </header>
   <main class="svg__content">
     <section class="svg__item">
       <h3 class="h3">basic</h3>
-      <p>绘制多行文本</p>
       <div class="svg clearfix">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,9 +25,15 @@
           x="0"
           y="0"
         >
-          <text x="12" y="12">
-            <tspan>text 1</tspan>
-            <tspan>text 2</tspan>
+          <defs>
+            <path
+              id="textPath"
+              d="M20,20 a1,1 0 0,0 100,0"
+            ></path>
+          </defs>
+
+          <text x="10" y="100">
+            <textpath xlink:href="#textPath">text on path</textpath>
           </text>
         </svg>
       </div>
@@ -37,7 +42,7 @@
       </pre>
       <div class="note">
         <h4></h4>
-        <p></p>
+        <p>如果路径比文本短，则仅绘制路径长度内的部分文本。</p>
       </div>
     </section>
   </main>
