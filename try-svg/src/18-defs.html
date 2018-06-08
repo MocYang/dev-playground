@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>18 defs</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<section class="svg-wrapper">
+  <header class="title">
+    <h2 class="h2">defs</h2>
+    <div class="br"></div>
+  </header>
+  <main class="svg__content">
+    <section class="svg__item">
+      <h3 class="h3">basic</h3>
+      <p>SVG defs元素中嵌套了在SVG图片中可重用的定义</p>
+      <div class="svg clearfix">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 800 200"
+          width="800"
+          height="200"
+          x="0"
+          y="0"
+        >
+          <defs>
+            <g id="shape1" transform="rotate(-45 50 50)">
+              <rect x="50" y="50" width="50" height="50" style="fill: #c00;" />
+              <rect x="0" y="0" width="50" height="50" style="fill: #c00;" />
+              <circle cx="50" cy="50" r="50" style="fill: #c00; stroke: none" />
+              <circle cx="50" cy="50" r="5" style="fill: #cfcfdf; stroke: none" />
+            </g>
+          </defs>
+
+          <use xlink:href="#shape1" x="100" y="10" />
+          <use xlink:href="#shape1" x="300" y="10" />
+        </svg>
+      </div>
+      <pre>
+        <code class="code"></code>
+      </pre>
+      <div class="note">
+        <h4></h4>
+        <p></p>
+      </div>
+    </section>
+  </main>
+</section>
+
+<script></script>
+</body>
+</html>
