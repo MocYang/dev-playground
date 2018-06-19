@@ -37,3 +37,50 @@ log(chunk([1, 2, 3, 4, 5], 2)) // [[1, 2], [3, 4], [5]]
  */
 const compact = arr => arr.filter(Boolean)
 log(compact([1, 2, 0, '', undefined, , NaN, null, 2, 3])) // [1, 2, 3, 3]
+
+/**
+ * 对给定数组中的元素按fn分组，返回每个分组中元素的个数
+ * @param arr
+ * @param fn
+ * @returns {*}
+ */
+const countBy = (arr, fn) =>
+  arr
+    .map(typeof fn === 'function' ? fn : val => val[fn])
+    .reduce((acc, val, i) => {
+      acc[val] = (acc[val] || 0) + 1
+      return acc
+    }, {})
+log(countBy([1.22, 0.22, 3.21, 1.4], Math.floor)) // {0: 1, 1: 2, 3: 1}
+log(countBy(['one', 'two', 'three'], 'length')) // {3: 2, 5: 1}
+
+/**
+ * 计算给定val在arr中出现的次数
+ * @param arr
+ * @param val
+ * @returns {*}
+ */
+const countOccurrences = (arr, val) =>
+  arr.reduce((acc, v) => (v === val ? ++acc : acc), 0)
+log(countOccurrences([1, 2, 3, 4, 5, 1], 1)) // 2
+
+/**
+ * 递归扁平化给定数组
+ * @param arr
+ * @returns {*[]}
+ */
+const deepFlatten = arr =>
+  [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)))
+log(deepFlatten([1, [2, 3], [[4], [5, 6]]])) // [1, 2, 3, 4, 5, 6]
+
+/**
+ * 返回给定数组a, b中相同的元素
+ * @param a
+ * @param b
+ * @returns {*}
+ */
+const same = (a, b) => {
+  const s = new Set(b)
+  return a.filter(x => s.has(x))
+}
+log(same([1, 2, 3, 11], [1, 2, 4, 5])) // [1, 2])
