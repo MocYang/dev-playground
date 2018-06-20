@@ -8,7 +8,18 @@
   <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.main.css %>">
 </head>
 <body>
-  <div id="root"></div>
-  <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+<div id="root">
+  <div>
+    <button id="copy-btn">copy to clipboard</button>
+  </div>
+  <div>
+    <button id="mutation-btn">mutation document</button>
+  </div>
+  <div>
+    <button id="stop-mutation">stop-mutation</button>
+  </div>
+  <p id="mutation"></p>
+</div>
+<script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 </html>

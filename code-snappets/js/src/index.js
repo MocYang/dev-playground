@@ -1,2 +1,5 @@
 // import './adapter'
-import './array'
+// import './array'
+import './browser.js'
+
+import './test/browser'
