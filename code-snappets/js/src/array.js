@@ -25,7 +25,7 @@ log('any: ', any([1, 2, 3, 4, 5], x => x > 4))
  * @returns {any[]}
  */
 const chunk = (arr, size) =>
-  Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => {
+  Array.from({length: Math.ceil(arr.length / size)}, (v, i) => {
     return arr.slice(i * size, (i + 1) * size)
   })
 log('chunk: ', chunk([1, 2, 3, 4, 5], 2)) // [[1, 2], [3, 4], [5]]
@@ -97,7 +97,7 @@ const intersectionBy = (a, b, fn) => {
   return a.filter(x => s.has(fn(x)))
 }
 log('intersectionBy: ',
-  intersectionBy([{ id: 1 }, { id: 2 }], [{ id: 2 }, { id: 4 }], x => x.id))
+  intersectionBy([{id: 1}, {id: 2}], [{id: 2}, {id: 4}], x => x.id))
 
 /**
  * 10 返回所有元素的并集
@@ -119,8 +119,8 @@ const unionSetBy = (fn, ...arrs) =>
     [])
 log('unionSetBy: ',
   unionSetBy(x => x.id,
-    [{ id: 2 }, { id: 3 }],
-    [{ id: 2 }, { id: 4 }, { id: 5 }]))
+    [{id: 2}, {id: 3}],
+    [{id: 2}, {id: 4}, {id: 5}]))
 
 /**
  * 12 返回a-b的差集(x 属于a, 但不属于b)
@@ -148,8 +148,8 @@ const differenceBy = (a, b, fn) => {
   return a.filter(x => !s.has(fn(x)))
 }
 log('differenceBy: ',
-  differenceBy([{ id: 1 }, { id: 2 }, { id: 3 }],
-    [{ id: 2 }, { id: 4 }],
+  differenceBy([{id: 1}, {id: 2}, {id: 3}],
+    [{id: 2}, {id: 4}],
     x => x.id))
 
 /**
