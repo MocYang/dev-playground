@@ -247,9 +247,47 @@ const flatten = (arr, depth = 1) =>
 log('flatten: ', flatten([1, [2], [3, 4], 5]))
 log('flatten: ', flatten([1, [2, [3, [4, 5], 6], 7], 8], 2))
 
+/**
+ * 逆序遍历数组
+ * @param arr
+ * @param fn
+ * @returns {*}
+ */
 const forEachRight = (arr, fn) =>
   arr
     .slice(0)
     .reverse()
     .forEach(fn)
 log('forEachRight: ', forEachRight([1, 2, 3, 4], x => log(x)))
+
+/**
+ * 返回数组元素，除了最后一个
+ * @param arr
+ * @returns {*}
+ */
+const initial = (arr) => arr.slice(0, -1)
+log('initial: ', initial([1, 2, 3, 4]))
+
+/**
+ * 初始化具有n个元素的数组，并填充初始值val
+ * @param n
+ * @param val
+ * @returns {any[]}
+ */
+const initializeArrayWithValues  = (n, val) => Array(n).fill(val)
+log('initializeArrayWithValues: ', initializeArrayWithValues(12, 'null'))
+
+/**
+ *
+ * @param arr
+ * @returns {*}
+ */
+const shuffle = ([...arr]) => {
+  let m = arr.length
+  while(m) {
+    const i = Math.floor(Math.random() * m--);
+    [arr[m], arr[i]] = [arr[i], arr[m]]
+  }
+  return arr
+}
+log('shuffle: ', shuffle([1, 2, 3, 4, 5, 6, 7, 8]))

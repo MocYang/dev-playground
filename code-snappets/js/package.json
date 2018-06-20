@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch --hide-modules --progress",
+    "dev": "webpack-dev-server --mode development --watch --hide-modules --progress --inline",
     "build": "webpack --mode production",
     "standard": "standard --fix --verbose",
     "precommit": "lint-staged"
