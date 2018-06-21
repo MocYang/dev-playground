@@ -2,7 +2,9 @@ import {
   copyToClipboard,
   createEventBus,
   detectDeviceType,
-  observeMutations
+  observeMutations,
+  scrollToTop,
+  scrollIntoView
 } from '../browser'
 
 const query = (selector) => document.querySelector(selector)
@@ -41,4 +43,14 @@ const obs = observeMutations(mutationBtn, function (m) {
 const stopMutationBtn = query('#stop-mutation')
 stopMutationBtn.onclick = function () {
   obs.disconnect()
+}
+
+const scrollTopBtn = query('#scroll-top')
+scrollTopBtn.onclick = function () {
+  scrollToTop()
+}
+
+const scrollIntoViewBtn = query('#scroll-into-view')
+scrollIntoViewBtn.onclick= function () {
+  scrollIntoView(query('#scroll-into-view-text'))
 }

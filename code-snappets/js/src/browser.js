@@ -143,3 +143,35 @@ export const prefix = (prop) => {
   const i = prefixes.findIndex(prefix => typeof document.body.style[prefix ? prefix + capitalizedProp : prop] !== 'undefined')
   return i !== -1 ? (i === 0 ? prop : prefixes[i] + capitalizedProp) : null
 }
+
+/**
+ * 回到顶部
+ */
+export const scrollToTop = () => {
+  const top = document.documentElement.scrollTop || document.body.scrollTop
+  if (top > 0) {
+    window.requestAnimationFrame(scrollToTop)
+    window.scrollTo(0, top * (1 - 1 / 8))
+  }
+}
+
+/**
+ * element scroll into view
+ * block: start - scroll to top of viewport,
+ *         end  - scroll to bottom of viewport.
+ *         not set - scroll to center of viewport.
+ * @param element
+ * @param block
+ */
+export const scrollIntoView = (element, block = '') => {
+  const scrollOption = {
+    behavior: 'smooth',
+    inline: "nearest"
+  }
+  if (block) {
+    scrollOption['block'] = block
+  }
+  if (element.nodeType === 1) {
+    element.scrollIntoView(scrollOption)
+  }
+}
