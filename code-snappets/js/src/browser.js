@@ -1,12 +1,12 @@
 import { log } from './utils/utils'
 
-export const botttomVisible = () => {
+export const bottomVisible = () => {
   const docElem = document.documentElement
   const clientHeight = docElem.clientHeight
   const scrollHeight = docElem.scrollHeight
   return clientHeight + window.scrollY >= (scrollHeight || clientHeight)
 }
-log('bottomVisible: ', botttomVisible())
+log('bottomVisible: ', bottomVisible())
 
 /**
  * 复制到剪贴板（需要事件触发，否则无效）
