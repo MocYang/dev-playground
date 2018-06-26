@@ -1,0 +1,245 @@
+@charset "UTF-8";
+
+// box-sizing reset
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  box-sizing: border-box;
+}
+
+
+// clearfix
+.clearfix::after {
+  display: block;
+  content: '';
+  clear: both;
+  font-size: 0;
+}
+
+// flexbox-centering
+.flexbox-centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// grid centering
+.grid-centering {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+
+// truncate text 文字超出隐藏，显示为...
+.truncate-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 120px;
+}
+
+/* visual  */
+// 圆
+.circle {
+  border-radius: 50%;
+}
+
+
+// custom scrollbar 自定义滚动条
+// document scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+// element scrollbar
+.element::-webkit-scrollbar {
+
+}
+
+// custom text selection 选中文本时的样式
+::selection {
+  background: aqua;
+  color: #111;
+}
+
+.custom-text-selection::selection {
+  background: aqua;
+  color: #111;
+}
+
+// dynamic shadow 动态的阴影效果，自适应所在容器的背景颜色
+.dynamic-box {
+  position: relative;
+  width: 10em;
+  height: 10em;
+  z-index: 1;
+}
+
+.dynamic-box::after {
+  position: absolute;
+  top: .5rem;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(0.4rem);
+  opacity: 0.66;
+}
+
+// etched text 雕刻效果的文字
+.etched-text {
+  color: #b8bec5;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: 0 2px white;
+}
+
+// 1像素边框的问题，不止可以用box-shadow来模拟。
+.hairline-border {
+  box-shadow: 0 0 0 1px;
+}
+@media (min-resolution: 2dppx) {
+  .hairline-border {
+    box-shadow: 0 0 0 0.5px;
+  }
+}
+@media (min-resolution: 3dppx) {
+  .hairline-border {
+    box-shadow: 0 0 0 0.33333333px;
+  }
+}
+@media (min-resolution: 4dppx) {
+  .hairline-border {
+    box-shadow: 0 0 0 0.25px;
+  }
+}
+
+// overflow scroll gradient 有滚动条时，容器底部出现渐变效果
+/*
+  <div class="overflow-scroll-gradient">
+    <div class="overflow-scroll-gradient__scroller">
+      Content to be scrolled
+    </div>
+  </div>
+ */
+.overflow-scroll-gradient {
+  position: relative;
+}
+.overflow-scroll-gradient::after {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(rgba(255, 255, 255, .001), white);
+  pointer-events: none;
+}
+.overflow-scroll-gradient__scroller {
+  width: 100%;
+  height: 320px;
+  padding: 20px 0;
+  line-height: 1.2;
+  background: white;
+  overflow-y: auto;
+}
+
+// system font stack 尽可能使用原生系统字体
+.system-font-stack {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+  Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+// triangle 三角形
+.triangle {
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: #fff;
+}
+
+// donut spinner 旋转圆加载动画
+@keyframes donut-spinner {
+  0% {transform: rotate(0deg)}
+  100% {transform: rotate(360deg)}
+}
+.donut {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 4px solid rgba(0, 0, 0, .1);
+  border-left-color: #00ccff;
+  animation: donut-spinner 1.2s linear infinite;
+}
+
+// height transition use css-var
+/*
+  <div class="trigger">
+    Hover me to see a height transition.
+    <div class="el">content</div>
+  </div>
+
+  <script>
+    var el = document.querySelector('.el')
+    var height = el.scrollHeight
+    el.style.setProperty('--max-height', height + 'px')
+  </script>
+
+  browser support:
+    IE->not,
+    edge-> >=17,
+    firefox-> >=62,
+    chrome-> >=65,
+    safari-> >=11.1,
+    uc->not,
+    samsung internet->not.
+*/
+.el {
+  max-height: 0;
+  transition: max-height 0.3s;
+  overflow: hidden;
+}
+.trigger:hover > .el {
+  max-height: var(--max-height)
+}
+
+// hover underline animation
+.hover-underline-animation {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transform: scaleX(0);
+  transition: transform 0.2s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
