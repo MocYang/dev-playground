@@ -19,7 +19,8 @@ class App extends Component {
     })
   }
 
-  handleScroll = (e) => {
+  /* eslint-disable-next-line */
+  handleScroll (e) {
     const appElem = e.target
     const pageHeight = this.state.pageHeight
     const scrollTop = appElem.scrollTop
@@ -35,7 +36,7 @@ class App extends Component {
   render () {
     const emojiScale = this.state.emojiScale
     return (
-      <div className="app" onScroll={this.handleScroll}>
+      <div className="app" onScroll={this.handleScroll.bind(this)}>
         <div ref={this.page} className="page page1" />
         <div className="page page2" />
         <div className="page page3">

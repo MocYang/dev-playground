@@ -27,7 +27,7 @@ module.exports = {
     'indent': 'off',
     'space-before-function-paren': ['error', 'always'],
     'space-before-blocks': ['error', {'functions': 'always', 'keywords': 'always', 'classes': 'always'}],
-    'function-paren-newline': ['error', {'minItems': 5}],
+    'function-paren-newline': ['error', 'consistent'],
     // 'arrow-parens': ['error', 'as-needed'],
     'no-confusing-arrow': ['error', {'allowParens': true}],
     'no-useless-constructor': 'error',
