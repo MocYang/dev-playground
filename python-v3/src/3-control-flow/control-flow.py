@@ -12,10 +12,22 @@
 #     print(x + '等于10')
 
 # 2 for
-words = ['a', 'b', 'c']
-people = [{'name': '1'}, {'name': '2'}]
-for w in words:
-    print(w)
+# words = ['a', 'b', 'c']
+# people = [{'name': '1'}, {'name': '2'}]
+# for w in words:
+#     print(w)
+#
+# for p in people:
+#     print(p['name'])
 
-for p in people:
-    print(p['name'])
+# 3 range(start[, end[, step]])方法
+#   遍历数字集合, end总是不在结果集中
+for i in range(5):
+    print(i)
+print(list(range(5, 10)))
+print(list(range(-10, -100, -20)))
+rangeArr = ['a', 'b', 'c']
+for i in range(len(rangeArr)):
+    print(i, rangeArr[i])
+
+# 4 list()方法，生成一个可迭代对象
