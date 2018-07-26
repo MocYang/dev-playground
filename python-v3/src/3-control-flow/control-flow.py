@@ -178,26 +178,86 @@
 
 
 # 剩余参数*args，剩余关键参数**kargs
+# 关键参数只允许在剩余参数之后，
+
+# def shop_list(kind, *args, **kwargs):
+#     print('kind:', kind)
+#     for a in args:
+#         print(a)
+#
+#     for kw in kwargs:
+#         print(kw, ':', kwargs[kw])
+#
+#
+# shop_list(
+#     'a',
+#     'b',
+#     c=2,
+#     d=3
+# )
+
+# def concat(*args, root='/'):
+#     print(root.join(args))
+#
+#
+# concat('public', 'static', 'css')   # public/static/css
+
+# 解构 Unpacking Argument Lists
+#   *list 列表
+#   *tuple 元组
+#   **dist 字典
+#
+# print(list(range(3, 6)))    # [3, 4, 5]
+# args = [3, 6]
+# print(list(range(*args)))   # 解构列表 [3, 4, 5]
+#
+#
+# def print_list(**kwargs):
+#     for kw in kwargs:
+#         print(kw, ':', kwargs[kw])
+#
+#
+# dist = {"a": 1, "b": 2}
+# print_list(**dist)  # 解构一个字典
 
 
+# Lambda 表达式
+# small anonymous function 简单匿名函数
+# 可以作为函数返回，或者函数传参
+
+# def increment(n):
+#     return lambda x: x + n
 
 
+# add_10 = increment(10)
+# print(add_10(1))     # 11
+# print(add_10(10))    # 20
+# print(add_10(5))     # 15
+#
+#
+# def print_after_true(is_show, call=lambda x: x):
+#     if is_show:
+#         print(call())
+#
+#
+# print_after_true(True)    # True
+# print_after_true(1)       # 1
 
 
+# 函数文档字符 documentation string
+# 第一行文档应该简略说明该函数的意图，以大写字母开头结尾使用句号。
+# 第二行应该是空行
+# 余下的是参数和返回值，副作用的说明
+
+# 函数注解 -- 参数类型，返回类型说明
+
+def f(a: int, b: str='2') -> int:
+    print('Annotations: ', f.__annotations__)   # {'a': <class 'int'>, 'b': <class 'str'>, 'return': <class 'int'>}
+    print('Arguments: ', a, b)  # 2 2
+    return a + 1
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+print(f(2))
 
 
 
