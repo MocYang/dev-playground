@@ -22,12 +22,230 @@
 
 # 3 range(start[, end[, step]])方法
 #   遍历数字集合, end总是不在结果集中
-for i in range(5):
-    print(i)
-print(list(range(5, 10)))
-print(list(range(-10, -100, -20)))
-rangeArr = ['a', 'b', 'c']
-for i in range(len(rangeArr)):
-    print(i, rangeArr[i])
+# for i in range(5):
+#     print(i)
+# print(list(range(5, 10)))
+# print(list(range(-10, -100, -20)))
+# rangeArr = ['a', 'b', 'c']
+# for i in range(len(rangeArr)):
+#     print(i, rangeArr[i])
 
 # 4 list()方法，生成一个可迭代对象
+#
+
+
+# 4 break continue else 语句
+# break 结束内层循环
+# continue 结束本次循环，开始下一次循环
+# else 当循环结束(for)或者条件为假时执行(while),
+#       即循环体内，没有break语句结束本次循环，当循环结束时就会执行else语句
+
+# for n in range(2, 10):
+#     for x in range(2, n):
+#         if n % x == 0:
+#             print(n, 'equals ', x, ' * ', n // x)
+#             break
+#     else:
+#         print(n, 'is a prime number')
+#
+# for n in range(2, 11):
+#     if n % 2 == 0:
+#         print(n, 'is even')
+#         continue
+#     print(n, 'is odd')
+
+# 5 pass 语句
+#   语义上的空语句，实际上不执行任何操作
+
+# 无限循环的空循环，直到Ctrl-c退出
+# while True:
+#     pass
+
+# 最小空类
+# class MyEmptyClass:
+#     pass
+
+# 空函数
+# def initlog(*args):
+#     pass
+
+
+# 6 函数定义
+# 变量的作用域规则同js,优先查找当前作用域，再到父作用域，全局作用域,最后查找内置变量。
+# 无return语句的函数，默认返回None
+# def name(args):
+#     """ 可选的函数说明 """
+#     body
+#
+#
+
+
+# def fib(n):
+#     """
+#         return fib list
+#     """
+#
+#     ret = []
+#     a, b = 0, 1
+#     while a < n:
+#         ret.append(a)
+#         a, b = b, a + b
+#     return ret
+#
+#
+# print(list(fib(200)))
+
+
+# 7 函数的参数
+# 7.1 默认参数 def func(arg='default_value')
+
+# def ask_ok(prompt, retries=4, reminder='please try again!'):
+#     while True:
+#         answer = input(prompt)
+#         if answer in ('y', 'ye', 'yes'):
+#             return True
+#         elif answer in ('n', 'no', 'nop', 'nope'):
+#             return False
+#
+#         retries -= 1
+#         if retries <= 0:
+#             raise ValueError('invalid use res')
+#
+#         print(reminder)
+#
+#
+# ask_ok('input number')
+
+#     默认参数的赋值是在函数定义时，且只执行一次
+# i = 5
+#
+#
+# def f(a=i):
+#     print(a)  # 5
+#
+#
+# i = 6
+# f()
+#
+#
+# def f2(a, my_list=[]):
+#     my_list .append(a)
+#     return my_list
+#
+#
+# print(f2(1))    # [1]
+# print(f2(2))    # [1, 2]
+# print(f2(3))    # [1, 2, 3]
+#
+#
+# def f3(a, my_list=None):
+#     print(my_list)  # 都是None
+#     if my_list is None:
+#         my_list = []
+#     my_list.append(a)
+#     return my_list
+#
+#
+# print(f3(1))    # [1]
+# print(f3(2))    # [2]
+# print(f3(3))    # [3]
+
+
+# 关键参数 fn(kargs=value)
+# 调用函数时，指定参数的key和对应的value，此时，参数的顺序可以与函数定义时的参数顺序不同。
+#   需要注意的点：
+#       1 关键参数应该在必传参数之后
+#       2 关键参数不应该和必传参数重复
+#       3 关键参数key只能取函数定义时的形参名
+
+
+# def key_func(a, b=1, c=2, d=3):
+#     """
+#     关键参数示例
+#     :param a: 必传参数
+#     :param b: 可选的默认参数
+#     :param c: 可选的默认参数
+#     :param d: 可选的默认参数
+#     :return: None
+#     """
+#     print(a, b, c, d)
+#
+#
+# key_func(1, c=5)    # 1 1 5 3
+# key_func(a=4, b=5, c=6, d=1)   # 4 5 6 1
+# key_func(b=4, a=5, d=6, c=1)   # 5 4 1 6
+# key_func(a=4, b=5, c=6, d=1)   # 4 5 6 1
+
+
+# 剩余参数*args，剩余关键参数**kargs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
