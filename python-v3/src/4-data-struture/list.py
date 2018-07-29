@@ -131,3 +131,24 @@ matrix = [
 ]
 matrix_reverse = [[row[i] for row in matrix] for i in range(4)]
 print(matrix_reverse)    # [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+
+# del 语句
+#   1 删除给定索引的元素
+#   2 删除子列表
+#   3 删除整个列表
+a = [1, 2, 3, 4, 5, 5, 6]
+
+del a[1]
+print(a)
+
+del a[1:4]
+print(a)
+
+del a[:]
+print(a)
+
+# 删除了变量a的引用
+del a
+
+
+
