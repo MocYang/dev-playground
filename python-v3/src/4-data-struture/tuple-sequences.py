@@ -23,6 +23,10 @@ print(t1, len(t1))
 t2 = 'b',
 print(t2, len(t2))
 
+# 解构元组
+t3 = [1, 'b', True]
+x, y, z = t3
+print(x, y, z)  # 1 b True
 
 
 
