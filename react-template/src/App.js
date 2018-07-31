@@ -20,7 +20,8 @@ class App extends Component {
   }
 
   /* eslint-disable-next-line */
-  handleScroll (e) {
+  handleScroll = (e) => {
+    const app = ''
     const appElem = e.target
     const pageHeight = this.state.pageHeight
     const scrollTop = appElem.scrollTop
