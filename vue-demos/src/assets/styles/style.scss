@@ -1,0 +1,16 @@
+@charset "UTF-8";
+@import "./util.scss";
+
+.page {
+  background: #fff;
+}
+
+.page1 {
+  @include flexbox-centering;
+  width: 100vw;
+  height: 100vh;
+}
+
+.logo {
+  @include size(196, 96);
+}

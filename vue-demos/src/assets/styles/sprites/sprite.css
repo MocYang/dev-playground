@@ -1,0 +1,13 @@
+.icon { background-image: url(../../images/sprites/sprites.png) }
+.icon-q1-active { width: rem(131); height: rem(131); background-position: -262px -262px; }
+.icon-q1 { width: rem(131); height: rem(131); background-position: 0px -262px; }
+.icon-q2-active { width: rem(132); height: rem(131); background-position: 0px 0px; }
+.icon-q2 { width: rem(131); height: rem(131); background-position: -131px -131px; }
+.icon-q3-active { width: rem(131); height: rem(131); background-position: -264px 0px; }
+.icon-q3 { width: rem(131); height: rem(131); background-position: -264px -131px; }
+.icon-q4-active { width: rem(131); height: rem(131); background-position: 0px -131px; }
+.icon-q4 { width: rem(131); height: rem(131); background-position: -131px -262px; }
+.icon-q5-active { width: rem(132); height: rem(131); background-position: -132px 0px; }
+.icon-q5 { width: rem(131); height: rem(131); background-position: -395px 0px; }
+.icon-q6-active { width: rem(131); height: rem(131); background-position: -395px -131px; }
+.icon-q6 { width: rem(125); height: rem(127); background-position: -395px -262px; }
