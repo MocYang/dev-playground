@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  // 画水波图
   // 参考链接：https://mp.weixin.qq.com/s/mLNmm-GyXwiXLPB0i9E1_A
   import '@/assets/styles/sprites/sprite.scss'
   import '@/assets/styles/style.scss'
@@ -36,7 +37,8 @@
       return {
         swiperOption: {
           direction: 'vertical',
-          effect: 'fade'
+          effect: 'fade',
+          keyboard: true
         }
       }
     },
