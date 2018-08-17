@@ -9,10 +9,7 @@
           <div class="icon icon-q3"></div>
           <div class="icon icon-q4"></div>
         </div>
-      </g-slider>
-      <g-slider slide-id="page2" class="page page2">
-        <div ref="canvasRef" id="canvas-container"  class="canvas-container"></div>
-      </g-slider>
+      </g-slider>>
     </g-swiper>
   </div>
 </template>
@@ -36,7 +33,8 @@
       return {
         swiperOption: {
           direction: 'vertical',
-          effect: 'fade'
+          effect: 'fade',
+          keyword: true
         }
       }
     },

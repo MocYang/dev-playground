@@ -1,15 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Content from '@/pages/Index'
-
+import Main from '@/pages/Index'
+import CanvasWave from '@/pages/CanvasWave'
+import VisibleInView from '@/pages/VisibleInView'
+import Previewer from '@/pages/Previewer'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Content',
-      component: Content
+      name: 'Main',
+      component: Main
+    },
+    {
+      path: '/canvas-wave',
+      name: 'CanvasWave',
+      component: CanvasWave
+    },
+    {
+      path: '/visible-in-view',
+      name: 'VisibleInView',
+      component: VisibleInView
+    },
+    {
+      path: '/previewer',
+      name: 'Previewer',
+      component: Previewer
     }
   ]
 })
