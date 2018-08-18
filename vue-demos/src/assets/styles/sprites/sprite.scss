@@ -1,14 +1,15 @@
 @import "../util.scss";
-.icon { background-image: url(../../images/sprites/sprites.png) }
-.icon-q1-active { width: rem(131); height: rem(131); background-position: rem(-262) rem(-262); background-size: rem(526) rem(393);}
-.icon-q1 { width: rem(131); height: rem(131); background-position: rem(0) rem(-262); background-size: rem(526) rem(393);}
-.icon-q2-active { width: rem(132); height: rem(131); background-position: rem(0) rem(0); background-size: rem(526) rem(393);}
-.icon-q2 { width: rem(131); height: rem(131); background-position: rem(-131) rem(-131); background-size: rem(526) rem(393);}
-.icon-q3-active { width: rem(131); height: rem(131); background-position: rem(-264) rem(0); background-size: rem(526) rem(393);}
-.icon-q3 { width: rem(131); height: rem(131); background-position: rem(-264) rem(-131); background-size: rem(526) rem(393);}
-.icon-q4-active { width: rem(131); height: rem(131); background-position: rem(0) rem(-131); background-size: rem(526) rem(393);}
-.icon-q4 { width: rem(131); height: rem(131); background-position: rem(-131) rem(-262); background-size: rem(526) rem(393);}
-.icon-q5-active { width: rem(132); height: rem(131); background-position: rem(-132) rem(0); background-size: rem(526) rem(393);}
-.icon-q5 { width: rem(131); height: rem(131); background-position: rem(-395) rem(0); background-size: rem(526) rem(393);}
-.icon-q6-active { width: rem(131); height: rem(131); background-position: rem(-395) rem(-131); background-size: rem(526) rem(393);}
-.icon-q6 { width: rem(125); height: rem(127); background-position: rem(-395) rem(-262); background-size: rem(526) rem(393);}
+.sprite { background-image: url(../../images/sprites/sprites.png) }
+.sprite-bigecho-logo { width: rem(196); height: rem(96); background-position: rem(0) rem(0); background-size: rem(590) rem(489);}
+.sprite-q1-active { width: rem(131); height: rem(131); background-position: rem(-262) rem(-227); background-size: rem(590) rem(489);}
+.sprite-q1 { width: rem(131); height: rem(131); background-position: rem(0) rem(-358); background-size: rem(590) rem(489);}
+.sprite-q2-active { width: rem(132); height: rem(131); background-position: rem(0) rem(-96); background-size: rem(590) rem(489);}
+.sprite-q2 { width: rem(131); height: rem(131); background-position: rem(0) rem(-227); background-size: rem(590) rem(489);}
+.sprite-q3-active { width: rem(131); height: rem(131); background-position: rem(-131) rem(-227); background-size: rem(590) rem(489);}
+.sprite-q3 { width: rem(131); height: rem(131); background-position: rem(-328) rem(0); background-size: rem(590) rem(489);}
+.sprite-q4-active { width: rem(131); height: rem(131); background-position: rem(-459) rem(0); background-size: rem(590) rem(489);}
+.sprite-q4 { width: rem(131); height: rem(131); background-position: rem(-459) rem(-131); background-size: rem(590) rem(489);}
+.sprite-q5-active { width: rem(132); height: rem(131); background-position: rem(-196) rem(0); background-size: rem(590) rem(489);}
+.sprite-q5 { width: rem(131); height: rem(131); background-position: rem(-131) rem(-358); background-size: rem(590) rem(489);}
+.sprite-q6-active { width: rem(131); height: rem(131); background-position: rem(-262) rem(-358); background-size: rem(590) rem(489);}
+.sprite-q6 { width: rem(125); height: rem(127); background-position: rem(-393) rem(-358); background-size: rem(590) rem(489);}
