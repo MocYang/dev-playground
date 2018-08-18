@@ -1,14 +1,14 @@
 @import "../util.scss";
 .icon { background-image: url(../../images/sprites/sprites.png) }
-.icon-q1-active { width: rem(131); height: rem(131); background-position: rem(-262) rem(-262); }
-.icon-q1 { width: rem(131); height: rem(131); background-position: rem(0) rem(-262); }
-.icon-q2-active { width: rem(132); height: rem(131); background-position: rem(0) rem(0); }
-.icon-q2 { width: rem(131); height: rem(131); background-position: rem(-131) rem(-131); }
-.icon-q3-active { width: rem(131); height: rem(131); background-position: rem(-264) rem(0); }
-.icon-q3 { width: rem(131); height: rem(131); background-position: rem(-264) rem(-131); }
-.icon-q4-active { width: rem(131); height: rem(131); background-position: rem(0) rem(-131); }
-.icon-q4 { width: rem(131); height: rem(131); background-position: rem(-131) rem(-262); }
-.icon-q5-active { width: rem(132); height: rem(131); background-position: rem(-132) rem(0); }
-.icon-q5 { width: rem(131); height: rem(131); background-position: rem(-395) rem(0); }
-.icon-q6-active { width: rem(131); height: rem(131); background-position: rem(-395) rem(-131); }
-.icon-q6 { width: rem(125); height: rem(127); background-position: rem(-395) rem(-262); }
+.icon-q1-active { width: rem(131); height: rem(131); background-position: rem(-262) rem(-262); background-size: rem(526) rem(393);}
+.icon-q1 { width: rem(131); height: rem(131); background-position: rem(0) rem(-262); background-size: rem(526) rem(393);}
+.icon-q2-active { width: rem(132); height: rem(131); background-position: rem(0) rem(0); background-size: rem(526) rem(393);}
+.icon-q2 { width: rem(131); height: rem(131); background-position: rem(-131) rem(-131); background-size: rem(526) rem(393);}
+.icon-q3-active { width: rem(131); height: rem(131); background-position: rem(-264) rem(0); background-size: rem(526) rem(393);}
+.icon-q3 { width: rem(131); height: rem(131); background-position: rem(-264) rem(-131); background-size: rem(526) rem(393);}
+.icon-q4-active { width: rem(131); height: rem(131); background-position: rem(0) rem(-131); background-size: rem(526) rem(393);}
+.icon-q4 { width: rem(131); height: rem(131); background-position: rem(-131) rem(-262); background-size: rem(526) rem(393);}
+.icon-q5-active { width: rem(132); height: rem(131); background-position: rem(-132) rem(0); background-size: rem(526) rem(393);}
+.icon-q5 { width: rem(131); height: rem(131); background-position: rem(-395) rem(0); background-size: rem(526) rem(393);}
+.icon-q6-active { width: rem(131); height: rem(131); background-position: rem(-395) rem(-131); background-size: rem(526) rem(393);}
+.icon-q6 { width: rem(125); height: rem(127); background-position: rem(-395) rem(-262); background-size: rem(526) rem(393);}

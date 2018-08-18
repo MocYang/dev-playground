@@ -16,16 +16,18 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 
 const templateFunction = function (data) {
   let commonImport = '@import "../util.scss";'
-  var shared = '.icon { background-image: url(I) }'
+  let shared = '.icon { background-image: url(I) }'
     .replace('I', data.sprites[0].image)
 
-  var perSprite = data.sprites.map(function (sprite) {
-    return '.icon-N { width: rem(W); height: rem(H); background-position: rem(X) rem(Y); }'
+  const perSprite = data.sprites.map(function (sprite) {
+    return '.icon-N { width: rem(W); height: rem(H); background-position: rem(X) rem(Y); background-size: rem(SW) rem(SH);}'
       .replace('N', sprite.name)
       .replace('W', sprite.width)
       .replace('H', sprite.height)
       .replace('X', sprite.offset_x)
       .replace('Y', sprite.offset_y)
+      .replace('SW', sprite.total_width)
+      .replace('SH', sprite.total_height)
   }).join('\n')
 
   return commonImport + '\n' + shared + '\n' + perSprite
