@@ -1,9 +1,9 @@
 # frontend 前端开发说明
 
 # TODOs
-- webpack-sprite 完善
-- 水波图实现
-- 类微信的图片查看，切换，视频播放组件
+- [ ] 水波图实现
+- [ ] 类微信的图片查看，切换，视频播放组件
+- [ ] Preload 组件改进，支持exclude文件；manifest路径优化。
 
 ## 1 准备
 进入*frontend*目录，安装依赖包
