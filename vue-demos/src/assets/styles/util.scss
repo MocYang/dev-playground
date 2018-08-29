@@ -7,10 +7,6 @@ $windowHeight: 1206px;
   @return $px * 1px / $fontBase * 1rem;
 }
 
-@function rem_reverse($px) {
-  @return $px * 1px;
-}
-
 @function pxToVw ($width) {
   @return $width * 1px / $windowWidth * 100vw;
 }
