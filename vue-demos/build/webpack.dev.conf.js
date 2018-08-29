@@ -10,26 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const WebpackMd5Hash = require('webpack-md5-hash')
-const SpritesmithPlugin = require('webpack-spritesmith')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
-
-const templateFunction = function (data) {
-  let commonImport = '@import "../util.scss";'
-  var shared = '.icon { background-image: url(I) }'
-    .replace('I', data.sprites[0].image)
-
-  var perSprite = data.sprites.map(function (sprite) {
-    return '.icon-N { width: rem(W); height: rem(H); background-position: rem(X) rem(Y); }'
-      .replace('N', sprite.name)
-      .replace('W', sprite.width)
-      .replace('H', sprite.height)
-      .replace('X', sprite.offset_x)
-      .replace('Y', sprite.offset_y)
-  }).join('\n')
-
-  return commonImport + '\n' + shared + '\n' + perSprite
-}
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
@@ -89,28 +71,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       }
     ]),
 
-    new WebpackMd5Hash(),
-
-    new SpritesmithPlugin({
-      src: {
-        cwd: path.resolve(__dirname, '../src/assets/sprites'),
-        glob: '*.png'
-      },
-      target: {
-        image: path.resolve(__dirname, '../src/assets/images/sprites/sprites.png'),
-        css: [
-          [path.resolve(__dirname, '../src/assets/styles/sprites/sprite.scss'), {
-            format: 'function_based_template'
-          }]
-        ]
-      },
-      customTemplates: {
-        'function_based_template': templateFunction,
-      },
-      apiOptions: {
-        cssImageRef: '../../images/sprites/sprites.png'
-      }
-    })
+    new WebpackMd5Hash()
   ]
 })
 

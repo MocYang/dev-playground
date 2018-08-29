@@ -1,14 +1,32 @@
 @charset "UTF-8";
 @import "./util.scss";
 
-.page {
-  background: #fff;
+.back-to-home {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 99;
+  text-decoration: underline;
 }
 
-.page1 {
+.page {
   @include flexbox-centering;
   width: 100vw;
   height: 100vh;
+  background: lightyellow;
+  color: #333;
+}
+
+.page-list {
+  @include flexbox-centering;
+  flex-direction: column;
+
+  .link-elem {
+    font-size: 15px;
+    margin: 8px;
+    text-decoration: underline;
+    background-size: rem(131) rem(131);
+  }
 }
 
 .logo {

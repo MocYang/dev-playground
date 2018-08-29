@@ -38,6 +38,7 @@ __webpack_public_path__ = assetsRoot
 
 // 样式文件一定要在 __webpack_public_path__ 赋值之后导入
 require('@/assets/styles/share.scss')
+require('../assets/styles/style.scss')
 
 // 按需引入mock文件
 if (process.env.NODE_ENV === 'development') {

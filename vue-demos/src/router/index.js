@@ -1,20 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/pages/Index'
 import CanvasWave from '@/pages/CanvasWave'
 import VisibleInView from '@/pages/VisibleInView'
 import Previewer from '@/pages/Previewer'
+import Index from '@/pages/Index'
+import WebpackSprites from '@/pages/WebpackSprite'
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Main',
-      component: Main
+      name: 'Index',
+      component: Index
     },
     {
-      path: '/canvas-wave',
+      path: '/wave',
       name: 'CanvasWave',
       component: CanvasWave
     },
@@ -27,6 +29,11 @@ export default new Router({
       path: '/previewer',
       name: 'Previewer',
       component: Previewer
+    },
+    {
+      path: '/webpack-sprites',
+      name: 'WebpackSprites',
+      component: WebpackSprites
     }
   ]
 })
