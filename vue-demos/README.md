@@ -3,7 +3,6 @@
 # TODOs
 - [ ] 水波图实现
 - [ ] 类微信的图片查看，切换，视频播放组件
-- [ ] Preload 组件改进，支持exclude文件；manifest路径优化。
 - [ ] 三角函数和缓动动画的研究
 - [ ] canvas translate补充
 - [ ] vue 动态组件和异步组件的研究
