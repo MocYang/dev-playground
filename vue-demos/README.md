@@ -6,6 +6,7 @@
 - [ ] Preload 组件改进，支持exclude文件；manifest路径优化。
 - [ ] 三角函数和缓动动画的研究
 - [ ] canvas translate补充
+- [ ] vue 动态组件和异步组件的研究
 
 ## 1 准备
 进入*frontend*目录，安装依赖包
