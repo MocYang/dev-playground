@@ -7,6 +7,8 @@
 - [ ] canvas translate补充
 - [ ] vue 动态组件和异步组件的研究
 - [ ] 增加mobx从入门到放弃系列
+- [ ] Date.now()和+new Date(),new Date().valueOf(),new Date.getTime(), Number(new Date())的性能差异
+- [ ] Performance API学习
 
 ## 1 准备
 进入*frontend*目录，安装依赖包
