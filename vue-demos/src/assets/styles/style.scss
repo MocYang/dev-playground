@@ -32,3 +32,10 @@
 .logo {
   @include size(196, 96);
 }
+
+
+.canvas-container {
+  width: rem(500);
+  height: rem(500);
+  //border: 1px solid #cdcdcd;
+}
