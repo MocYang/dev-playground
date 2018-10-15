@@ -31,4 +31,33 @@ export const timeTaken = (fn) => {
 }
 
 export const toDecimalMark = (num, type = 'en-US') => num.toLocaleString(type)
-console.log(toDecimalMark(1234567325.234)) // "1,234,567,325.234"
+
+export const deepclone_iterate = (source) => {
+  const root = {}
+
+  const nodes = [
+    {
+      parent: root,
+      key: undefined,
+      data: source
+    }
+  ]
+
+  while (nodes.length) {
+    const node = nodes.pop()
+    const {parent, key, data} = node
+
+    for (let k in data) {
+      if (node.hasOwnProperty(k)) {
+        if (typeof data === 'object') {
+
+        }
+      }
+    }
+  }
+
+  return root
+}
+
+export const deepclone_json = (source) => JSON.parse(JSON.stringify(source))
+
