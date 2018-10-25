@@ -1,0 +1,9 @@
+<!--logs.wxml-->
+<view class="container log-list">
+  <text>page C</text>
+  <button bindtap="handleChooseImage">choose image</button>
+
+  <image style="width: 200px; height: 200px; background-color: #eeeeee;" src="{{src}}"></image>
+
+  <official-account bindload="handleOfficialAccountLoad"></official-account>
+</view>
