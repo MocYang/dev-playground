@@ -21,6 +21,7 @@ App({
         console.log('getSetting success call------')
         console.log(res)
         if (res.authSetting['scope.userInfo']) {
+          console.log('========授权通过')
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
@@ -36,7 +37,12 @@ App({
               }
             }
           })
+        } else {
+          console.log('========授权失败')
         }
+      },
+      fail: () => {
+        console.log('=======授权失败')
       }
     })
   },

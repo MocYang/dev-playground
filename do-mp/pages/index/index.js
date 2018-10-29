@@ -11,11 +11,13 @@ Page({
     activities: [
       {
         id: '1001',
-        name: 'A'
+        name: 'A',
+        url: ''
       },
       {
         id: '1002',
-        name: 'B'
+        name: 'B',
+        url: ''
       }
     ]
   },
