@@ -1,0 +1,90 @@
+@charset "UTF-8";
+@import './util.scss';
+
+#root {
+  overflow: hidden;
+}
+
+.carousel {
+  position: relative;
+  width: auto;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slider-container {
+  position: relative;
+  height: 100%;
+  transition: all .4s cubic-bezier(0, 0.2, 0.8, 1);
+}
+
+.slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: dimgray;
+  float: left;
+  @include flexbox-centering;
+  color: #fff;
+  font-size: 56px;
+}
+
+
+.indicators {
+  position: fixed;
+  bottom: 8vh;
+  overflow: hidden;
+  width: 100vw;
+  height: auto;
+  @include flexbox-centering;
+}
+
+.indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background: transparent;
+  cursor: pointer;
+
+  &.active {
+    background: #fff;
+  }
+
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.btn__play {
+  position: fixed;
+  right: 4vw;
+  bottom: 8vh;
+  width: 128px;
+  height: 128px;
+  cursor: pointer;
+  @extend %bg;
+
+  background-image: url("../images/pause.png");
+
+  &.play {
+    background-image: url("../images/play.png");
+  }
+}
+
+.btn__arrow {
+  width: 128px;
+  height: 128px;
+  position: absolute;
+  top: calc(50vh - (128 / 2) * 1px);
+  cursor: pointer;
+  @extend %bg;
+}
+
+.btn__prev {
+  left: 4vw;
+  background-image: url('../images/prev.png');
+}
+.btn__next {
+  right: 4vw;
+  background-image: url('../images/next.png');
+}

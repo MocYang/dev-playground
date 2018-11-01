@@ -1,31 +1,29 @@
-import React, { Component } from 'react'
-import './App.css'
-import Seperator from './components/Seperator'
-import HookExample from './components/HookExample'
-import NormalClassExample from './components/NormalClassExample'
-import Mouse from './modules/RenderProps/Mouse'
-
-class App extends Component {
-  render () {
-    return (
-      <div className="App">
-        <NormalClassExample />
-        <Seperator />
-        <HookExample title={'hook example 1'} />
-        <Seperator />
-        <HookExample title={'hook example 2'} />
-        <Seperator />
-        <Mouse>
-          {({x, y}) => (
-            <div style={{width: '100%', height: '200px'}}>
-              <p>x-{x}</p>
-              <p>y-{y}</p>
-            </div>
-          )}
-        </Mouse>
-      </div>
-    )
-  }
-}
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+import './assets/styles/share.scss'
+import './assets/styles/style.scss'
+import Index from './container/Index'
+import Hooks from './container/Hooks'
+import RenderProps from './container/RenderProps'
+import NormalClass from './container/NormalClass'
+import Carousel from './container/Carousel'
+const App = () => (
+  <Router>
+    <React.Fragment>
+      <Switch>
+        <Route exact path='/' component={Index} />
+        <Route path='/hooks' component={Hooks} />
+        <Route path='/carousel' component={Carousel} />
+        <Route path='/normal-class' component={NormalClass} />
+        <Route path='/render-props' component={RenderProps} />
+        <Route component={(() => <div>not match</div>)} />
+      </Switch>
+    </React.Fragment>
+  </Router>
+)
 
 export default App
