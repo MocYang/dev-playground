@@ -75,11 +75,6 @@ const Carousel = (props) => {
   useEffect(() => {
     const transformX = window.innerWidth * activeSlider + 'px'
     carousel.current.style.transform = `translateX(-${transformX})`
-
-    if (play) {
-      cancelProgressTicker(progressTimer)
-      progressTimer = window.requestAnimationFrame(startProgressTicker)
-    }
   }, [activeSlider])
 
   useMutationEffect(() => {
