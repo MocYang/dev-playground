@@ -4,6 +4,7 @@ import '../assets/styles/carousel.scss'
 import Slider from '../components/Slider'
 import Indicators from '../components/Indicators'
 import Indicator from '../components/Indicator'
+import ProgressBar from '../components/ProgressBar'
 
 const sliders = [
   {
@@ -24,14 +25,33 @@ const sliders = [
   }
 ]
 
+let progressTimestamp = null
+let autoplayTimer = null
+let progressTimer = null
 
 const Carousel = (props) => {
   const carousel = useRef(null)
   const [activeSlider, setActiveSlider] = useState(0)
-
+  const [progress, setProgress] = useState(0)
   const [play, setPlay] = useState(props.autoplay)
 
-  let autoplayTimer = null
+  const startProgressTicker = (timestamp) => {
+    if (!progressTimestamp && timestamp) {
+      progressTimestamp = timestamp
+    }
+    const progressMax = 100
+    const progressMin = 0
+    const timeRemain = props.interval
+    const timePass = timestamp - progressTimestamp
+    setProgress(Math.floor((progressMax - progressMin) * (timePass) / timeRemain))
+    progressTimer = window.requestAnimationFrame(startProgressTicker)
+  }
+
+  const cancelProgressTicker = () => {
+    window.cancelAnimationFrame(progressTimer)
+    setProgress(0)
+    progressTimestamp = null
+  }
 
   const setAutoplay = () => setInterval(() => {
     setActiveSlider((preActive) => {
@@ -48,15 +68,22 @@ const Carousel = (props) => {
 
   // 计算carousel-wrapper的宽, 只在组件挂载/卸载各执行一次
   useLayoutEffect(() => {
-    console.log('Carousel mounted')
     carousel.current.style.width = window.innerWidth * sliders.length + 'px'
   }, [])
 
   // 每次activeSlider有变化之后，设置容器的偏移量
   useEffect(() => {
-    console.log('activeSlider after render: ', activeSlider)
     const transformX = window.innerWidth * activeSlider + 'px'
     carousel.current.style.transform = `translateX(-${transformX})`
+
+    return () => {
+      progressTimestamp = null
+      console.log('before next activeSlider change')
+      console.log('play status in activeSlider change: ', play)
+      if (!play) {
+        cancelProgressTicker()
+      }
+    }
   }, [activeSlider])
 
   // 切换自动轮播
@@ -64,10 +91,13 @@ const Carousel = (props) => {
     console.log('play status: ', play)
     if (play) {
       autoplayTimer = setAutoplay()
+      startProgressTicker()
     }
 
     return () => {
+      console.log('clean up timers.')
       clearInterval(autoplayTimer)
+      cancelProgressTicker()
     }
   }, [play])
 
@@ -99,7 +129,7 @@ const Carousel = (props) => {
       </div>
 
       <Indicators render={() => (
-        sliders.map((slider ,index) => (
+        sliders.map((slider, index) => (
           <Indicator
             key={slider.id}
             active={activeSlider === index}
@@ -110,15 +140,17 @@ const Carousel = (props) => {
       </Indicators>
 
       <div className="btn__arrow btn__prev" onClick={gotoPrev} />
-      <div className="btn__arrow btn__next" onClick={gotoNext}/>
-      <div className={`btn__play ${!play ? 'play' : ''}`} onClick={() => setPlay(!play)}/>
+      <div className="btn__arrow btn__next" onClick={gotoNext} />
+      <div className={`btn__play ${!play ? 'play' : ''}`} onClick={() => setPlay(!play)} />
+
+      <ProgressBar progress={progress} />
     </div>
   )
 }
 
 Carousel.defaultProps = {
   autoplay: false,
-  interval: 5000
+  interval: 3000
 }
 
 export default Carousel
