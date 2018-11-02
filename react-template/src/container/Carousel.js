@@ -76,10 +76,27 @@ const Carousel = (props) => {
     const transformX = window.innerWidth * activeSlider + 'px'
     carousel.current.style.transform = `translateX(-${transformX})`
 
+    if (play) {
+      cancelProgressTicker(progressTimer)
+      progressTimer = window.requestAnimationFrame(startProgressTicker)
+    }
+
     return () => {
-      progressTimestamp = null
       console.log('before next activeSlider change')
       console.log('play status in activeSlider change: ', play)
+    }
+  }, [activeSlider])
+
+  useMutationEffect(() => {
+    if (play) {
+      cancelProgressTicker(progressTimer)
+      clearInterval(autoplayTimer)
+      progressTimer = window.requestAnimationFrame(startProgressTicker)
+      autoplayTimer = setAutoplay()
+    }
+
+    return () => {
+      progressTimestamp = null
     }
   }, [activeSlider])
 
