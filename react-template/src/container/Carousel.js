@@ -80,11 +80,6 @@ const Carousel = (props) => {
       cancelProgressTicker(progressTimer)
       progressTimer = window.requestAnimationFrame(startProgressTicker)
     }
-
-    return () => {
-      console.log('before next activeSlider change')
-      console.log('play status in activeSlider change: ', play)
-    }
   }, [activeSlider])
 
   useMutationEffect(() => {
@@ -102,21 +97,18 @@ const Carousel = (props) => {
 
   // 切换自动轮播
   useMutationEffect(() => {
-    console.log('play status: ', play)
     if (play) {
       autoplayTimer = setAutoplay()
       progressTimer = window.requestAnimationFrame(startProgressTicker)
     }
 
     return () => {
-      console.log('clean up timers.')
       clearInterval(autoplayTimer)
       cancelProgressTicker(progressTimer)
     }
   }, [play])
 
   const gotoPrev = () => {
-    console.log('activeSlider before render: ', activeSlider)
     if (activeSlider === 0) {
       setActiveSlider(0)
     } else {
@@ -125,7 +117,6 @@ const Carousel = (props) => {
   }
 
   const gotoNext = () => {
-    console.log('activeSlider before render: ', activeSlider)
     if (activeSlider === sliders.length - 1) {
       setActiveSlider(sliders.length - 1)
     } else {
