@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useLayoutEffect } from 'react'
+import React, { useRef, useState, useEffect, useLayoutEffect, useMutationEffect } from 'react'
 import '../assets/styles/carousel.scss'
 
 import Slider from '../components/Slider'
@@ -47,8 +47,8 @@ const Carousel = (props) => {
     progressTimer = window.requestAnimationFrame(startProgressTicker)
   }
 
-  const cancelProgressTicker = () => {
-    window.cancelAnimationFrame(progressTimer)
+  const cancelProgressTicker = (id) => {
+    window.cancelAnimationFrame(id)
     setProgress(0)
     progressTimestamp = null
   }
@@ -80,24 +80,21 @@ const Carousel = (props) => {
       progressTimestamp = null
       console.log('before next activeSlider change')
       console.log('play status in activeSlider change: ', play)
-      if (!play) {
-        cancelProgressTicker()
-      }
     }
   }, [activeSlider])
 
   // 切换自动轮播
-  useEffect(() => {
+  useMutationEffect(() => {
     console.log('play status: ', play)
     if (play) {
       autoplayTimer = setAutoplay()
-      startProgressTicker()
+      progressTimer = window.requestAnimationFrame(startProgressTicker)
     }
 
     return () => {
       console.log('clean up timers.')
       clearInterval(autoplayTimer)
-      cancelProgressTicker()
+      cancelProgressTicker(progressTimer)
     }
   }, [play])
 
