@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useLayoutEffect, useMutationEffect } from 'react'
+import React, { useRef, useState, useLayoutEffect, useMutationEffect } from 'react'
 import '../assets/styles/carousel.scss'
 
 import Slider from '../components/Slider'
