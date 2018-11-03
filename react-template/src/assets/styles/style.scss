@@ -17,3 +17,20 @@
   color: #333;
 }
 
+.app__header {
+  position: fixed;
+  top: 4vh;
+  left: 4vw;
+  z-index: 99999;
+  font-size: 24px;
+  font-weight: bold;
+  //color: #fff;
+
+  & a {
+    color: inherit;
+  }
+}
+
+.page-index {
+  flex-direction: column;
+}
