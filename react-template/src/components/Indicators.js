@@ -4,7 +4,7 @@ const Indicators = (props) => {
   return (
     <div className="indicators">
       {
-        props.render()
+        props.children()
       }
     </div>
   )

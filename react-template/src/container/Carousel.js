@@ -25,46 +25,27 @@ const sliders = [
   }
 ]
 
-let progressTimestamp = null
 let autoplayTimer = null
-let progressTimer = null
+
+const setAutoplay = (cb, interval) => setInterval(() => {
+  cb((preActive) => {
+    let nextActive = preActive
+
+    if (nextActive === sliders.length - 1) {
+      nextActive = 0
+    } else {
+      nextActive++
+    }
+    return nextActive
+  })
+}, interval)
 
 const Carousel = (props) => {
   const carousel = useRef(null)
   const [activeSlider, setActiveSlider] = useState(0)
-  const [progress, setProgress] = useState(0)
   const [play, setPlay] = useState(props.autoplay)
-
-  const startProgressTicker = (timestamp) => {
-    if (!progressTimestamp && timestamp) {
-      progressTimestamp = timestamp
-    }
-    const progressMax = 100
-    const progressMin = 0
-    const timeRemain = props.interval
-    const timePass = timestamp - progressTimestamp
-    setProgress(Math.floor((progressMax - progressMin) * (timePass) / timeRemain))
-    progressTimer = window.requestAnimationFrame(startProgressTicker)
-  }
-
-  const cancelProgressTicker = (id) => {
-    window.cancelAnimationFrame(id)
-    setProgress(0)
-    progressTimestamp = null
-  }
-
-  const setAutoplay = () => setInterval(() => {
-    setActiveSlider((preActive) => {
-      let nextActive = preActive
-
-      if (nextActive === sliders.length - 1) {
-        nextActive = 0
-      } else {
-        nextActive++
-      }
-      return nextActive
-    })
-  }, props.interval)
+  const [progressRun, setProgressRun] = useState(props.autoplay)
+  const [progressReset, setProgressReset] = useState(null)
 
   // 计算carousel-wrapper的宽, 只在组件挂载/卸载各执行一次
   useLayoutEffect(() => {
@@ -72,38 +53,26 @@ const Carousel = (props) => {
   }, [])
 
   // 每次activeSlider有变化之后，设置容器的偏移量
-  useEffect(() => {
+  useLayoutEffect(() => {
     const transformX = window.innerWidth * activeSlider + 'px'
     carousel.current.style.transform = `translateX(-${transformX})`
-  }, [activeSlider])
-
-  useMutationEffect(() => {
-    if (play) {
-      cancelProgressTicker(progressTimer)
-      clearInterval(autoplayTimer)
-      progressTimer = window.requestAnimationFrame(startProgressTicker)
-      autoplayTimer = setAutoplay()
-    }
-
-    return () => {
-      progressTimestamp = null
-    }
   }, [activeSlider])
 
   // 切换自动轮播
   useMutationEffect(() => {
     if (play) {
-      autoplayTimer = setAutoplay()
-      progressTimer = window.requestAnimationFrame(startProgressTicker)
+      autoplayTimer = setAutoplay(setActiveSlider, props.interval)
+      setProgressRun(true)
+      setProgressReset(true)
     }
 
     return () => {
       clearInterval(autoplayTimer)
-      cancelProgressTicker(progressTimer)
+      setProgressRun(false)
     }
-  }, [play])
+  }, [play, activeSlider])
 
-  const gotoPrev = () => {
+  const toPrev = () => {
     if (activeSlider === 0) {
       setActiveSlider(0)
     } else {
@@ -111,7 +80,7 @@ const Carousel = (props) => {
     }
   }
 
-  const gotoNext = () => {
+  const toNext = () => {
     if (activeSlider === sliders.length - 1) {
       setActiveSlider(sliders.length - 1)
     } else {
@@ -122,28 +91,34 @@ const Carousel = (props) => {
   return (
     <div className="carousel">
       <div ref={carousel} className="slider-container">
-        {sliders.map(slider => (
-          <Slider key={slider.id} {...slider} />
-        ))
+        {
+          sliders.map(slider => (
+            <Slider key={slider.id} {...slider} />
+          ))
         }
       </div>
 
-      <Indicators render={() => (
-        sliders.map((slider, index) => (
-          <Indicator
-            key={slider.id}
-            active={activeSlider === index}
-            onClick={() => setActiveSlider(index)}
-          />
-        ))
-      )}>
+      <Indicators>
+        {() => (
+          sliders.map((slider, index) => (
+            <Indicator
+              key={slider.id}
+              active={activeSlider === index}
+              onClick={() => setActiveSlider(index)}
+            />
+          ))
+        )}
       </Indicators>
 
-      <div className="btn__arrow btn__prev" onClick={gotoPrev} />
-      <div className="btn__arrow btn__next" onClick={gotoNext} />
+      <div className="btn__arrow btn__prev" onClick={toPrev} />
+      <div className="btn__arrow btn__next" onClick={toNext} />
       <div className={`btn__play ${!play ? 'play' : ''}`} onClick={() => setPlay(!play)} />
 
-      <ProgressBar progress={progress} />
+      <ProgressBar
+        interval={props.interval}
+        run={progressRun}
+        reset={progressReset}
+      />
     </div>
   )
 }
