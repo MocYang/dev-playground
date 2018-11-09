@@ -1,43 +1,46 @@
-import React, { useMutationEffect, useState, useEffect } from 'react'
+import React, { useMutationEffect, useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 
-let progressTimestamp = null
-let progressTimer = null
+// let progressTimestamp = null
+// let progressTimer = null
 
 const ProgressBar = (props) => {
+  const progressTimestamp = useRef(null)
+  const progressTimer = useRef(null)
   const [progress, setProgress] = useState(0)
 
   const startProgressTicker = (timestamp) => {
-    if (!progressTimestamp && timestamp) {
-      progressTimestamp = timestamp
+    if (!progressTimestamp.current && timestamp) {
+      progressTimestamp.current = timestamp
     }
     const progressMax = 100
     const progressMin = 0
     const timeRemain = props.interval
-    const timePass = timestamp - progressTimestamp
+    const timePass = timestamp - progressTimestamp.current
     const currentProgress = Math.floor((progressMax - progressMin) * (timePass) / timeRemain)
     if (currentProgress >= 100) {
-      progressTimestamp = null
+      progressTimestamp.current = null
     }
     setProgress(currentProgress)
-    progressTimer = window.requestAnimationFrame(startProgressTicker)
+    progressTimer.current = window.requestAnimationFrame(startProgressTicker)
   }
 
   const cancelProgressTicker = (id) => {
     window.cancelAnimationFrame(id)
     setProgress(0)
-    progressTimestamp = null
+    progressTimestamp.current = null
   }
 
   // 切换自动轮播
   useMutationEffect(() => {
-    console.log(props.reset)
+  // useEffect(() => {
+    console.log(props)
     if (props.run) {
-      progressTimer = window.requestAnimationFrame(startProgressTicker)
+      progressTimer.current = window.requestAnimationFrame(startProgressTicker)
     }
 
     return () => {
-      cancelProgressTicker(progressTimer)
+      cancelProgressTicker(progressTimer.current)
     }
   }, [props.run, props.reset])
 
