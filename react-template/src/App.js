@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -6,16 +6,23 @@ import {
 } from 'react-router-dom'
 import './assets/styles/share.scss'
 import './assets/styles/style.scss'
-import Index from './container/Index'
-import Hooks from './container/Hooks'
-import RenderProps from './container/RenderProps'
-import NormalClass from './container/NormalClass'
-import Carousel from './container/Carousel'
-import Context from './container/context/Context'
 import Header from './components/Header'
+
+// import Index from './container/Index'
+// import Hooks from './container/Hooks'
+// import RenderProps from './container/RenderProps'
+import NormalClass from './container/NormalClass'
+// import Carousel from './container/Carousel'
+// import Context from './container/context/Context'
+
+const Index = lazy(() => import('./container/Index'))
+const Hooks = lazy(() => import('./container/Hooks'))
+const RenderProps = lazy(() => import('./container/RenderProps'))
+const Carousel = lazy(() => import('./container/Carousel'))
+const Context = lazy(() => import('./container/context/Context'))
 const App = () => (
   <Router>
-    <React.Fragment>
+    <Suspense fallback={<div className='page'>loading</div>}>
       <Header />
       <Switch>
         <Route exact path='/' component={Index} />
@@ -26,7 +33,7 @@ const App = () => (
         <Route path='/context' component={Context} />
         <Route component={(() => <div>not match</div>)} />
       </Switch>
-    </React.Fragment>
+    </Suspense>
   </Router>
 )
 
