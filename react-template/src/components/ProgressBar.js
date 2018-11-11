@@ -32,8 +32,8 @@ const ProgressBar = (props) => {
   }
 
   // 切换自动轮播
-  useMutationEffect(() => {
-  // useEffect(() => {
+  // useMutationEffect(() => {
+  useEffect(() => {
     console.log(props)
     if (props.run) {
       progressTimer.current = window.requestAnimationFrame(startProgressTicker)
