@@ -74,4 +74,31 @@ import os
 print(os.getcwd())
 """
 
+# 字符串的格式化：
+# 1 Formatting Expression basic
+# 格式： '...%d...' % (values)
+print('That is %d %s bird!' % (1, 'dead'))  # That is 1 dead bird!
+
+# TODO：字符串格式化表达式-类型表7-4。P271
+# code               Meaning
+# s                     String
+# r                     repr
+# c                     (int or str)
+# ...
+
+# 完整的格式
+# %[(keyname)][(flags)][(width)][.precision]typecode % (value)
+# keyname   右侧的值，对应的键
+# flags     左对齐（-），数字符号（+），正数之前的空格，负数（-），0填充等。
+# width     字符串的宽度
+# precision 小数位的精度
+
+
+# 2 ''.format()
+
+
+
+
+
+
 
