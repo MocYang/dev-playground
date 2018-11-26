@@ -18,12 +18,12 @@
 # basic
 # common string literals and operations
 # Operation                 interpretation(解释)
-s1, s2 = '', ""                # 空字符串
-s3 = "spam 's"                 # 引号表示，单/双
-s4 = 's\np\tz\x00m'            # 转义字符
-s5 = """...多行字符串..."""      # 多行字符
-s6 = r'\temp\spam'             # 原始字符
-s7 = b'sp\xc4m'                # 字节字符串
+# s1, s2 = '', ""                # 空字符串
+# s3 = "spam 's"                 # 引号表示，单/双
+# s4 = 's\np\tz\x00m'            # 转义字符
+# s5 = """...多行字符串..."""      # 多行字符
+# s6 = r'\temp\spam'             # 原始字符
+# s7 = b'sp\xc4m'                # 字节字符串
 
 # print(s1, s2)
 # print(s3)
@@ -77,13 +77,24 @@ print(os.getcwd())
 # 字符串的格式化：
 # 1 Formatting Expression basic
 # 格式： '...%d...' % (values)
-print('That is %d %s bird!' % (1, 'dead'))  # That is 1 dead bird!
+# print('That is %d %s bird!' % (1, 'dead'))  # That is 1 dead bird!
 
 # TODO：字符串格式化表达式-类型表7-4。P271
 # code               Meaning
 # s                     String
 # r                     repr
-# c                     (int or str)
+# c                     char(int or str)
+# d                     十进制小数
+# i                     整数
+# o                     8进制整数
+# x                     十六进制整数
+# X                     大写的十六进制整数
+# e                     小写的浮点数指数表示
+# E                     大写的浮点数指数表示
+# f                     浮点数
+# F                     大写的浮点数
+# g                     浮点数e or f
+# G                     浮点数E or F
 # ...
 
 # 完整的格式
@@ -95,10 +106,22 @@ print('That is %d %s bird!' % (1, 'dead'))  # That is 1 dead bird!
 
 
 # 2 ''.format()
+# t1 = '{0}, {1}, {2}'
+# s1 = t1.format('hello', 'world', 'your')
+# print(s1)  # hello, world, your
 
+# t2 = '{a1}, {a2}, {a3}'
+# s2 = t2.format(a1='hello', a2='world', a3='you')
+# print(s2)  # hello, world, you
 
+# import sys
+#
+# s = 'My {1[kind]} runs {0.platform}'.format(sys, {'kind': 'laptop'})
+# print(s)
 
+somelist = list('SPAM')
+s1 = 'first={l[0]}, third={l[2]}'.format(l=somelist)
+print(s1)
 
-
-
-
+s2 = 'first={0}, last={1}'.format(somelist[0], somelist[-1])
+print(s2)  # first=S, last=M
