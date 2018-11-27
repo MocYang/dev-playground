@@ -119,9 +119,35 @@ print(os.getcwd())
 # s = 'My {1[kind]} runs {0.platform}'.format(sys, {'kind': 'laptop'})
 # print(s)
 
-somelist = list('SPAM')
-s1 = 'first={l[0]}, third={l[2]}'.format(l=somelist)
-print(s1)
+# somelist = list('SPAM')
+# s1 = 'first={l[0]}, third={l[2]}'.format(l=somelist)
+# print(s1)
+#
+# s2 = 'first={0}, last={1}'.format(somelist[0], somelist[-1])
+# print(s2)  # first=S, lastt=M
 
-s2 = 'first={0}, last={1}'.format(somelist[0], somelist[-1])
-print(s2)  # first=S, last=M
+# 格式
+# 各部分之间不能有空格
+# {fieldname component !conversionflag :formatspec}
+# fieldname         数字索引或者关键字参数标识符
+# component         fieldname的属性引用fieldname.name or fieldname[index]
+# !conversionflag   r - repr, s - str, a - ascii
+# :formatspec       [[fill]align][sign][#][0][width][,][.precision][typecode]
+#       fill            填充字符 除了 { 和 }
+#       align           < - 左对齐，> - 右对齐，= - padding after a sign character, ^ - 居中对齐
+#       sign            +,-,空格
+#       width           字符串的宽度
+#       [,]             千分位分隔符
+#       .precision      小数部分的精度
+
+s1 = '{0:^10}={1:X}'.format('spam', 12345343)
+print(s1)           #    spam   =0123.34560
+
+
+
+
+
+
+
+
+
