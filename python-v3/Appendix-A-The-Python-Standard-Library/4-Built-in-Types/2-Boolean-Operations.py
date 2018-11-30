@@ -1,9 +1,6 @@
 # -*- charset: utf-8 -*-
-# list
+# and, or, not
 
 
 
-# tuple
 
-
-# range
