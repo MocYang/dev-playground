@@ -1,8 +1,0 @@
-[defaults]
-url=http://sentry.bigecko.com:9000
-org=sentry
-project=vue-demo
-
-[auth]
-token=fff97708d3f643ada98c7e251353d0c80310e92b358a47efb3961b1887c57224
-

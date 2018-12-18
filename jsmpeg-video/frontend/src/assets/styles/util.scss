@@ -1,0 +1,77 @@
+// 基本字体大小，取值为设计稿的1/10
+$fontBase: 75px;
+$windowWidth: 750px;
+$windowHeight: 1206px;
+
+@function rem ($px) {
+  @return $px * 1px / $fontBase * 1rem;
+}
+
+@function pxToVw ($width) {
+  @return $width * 1px / $windowWidth * 100vw;
+}
+
+@function pxToVh ($height) {
+  @return $height * 1px / $windowHeight * 100vh;
+}
+
+@mixin size($width, $height) {
+  width: rem($width);
+  height: rem($height);
+}
+
+// flexbox-centering
+%flexbox-centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// grid centering
+%grid-centering {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+// truncate text 文字超出隐藏，显示为...
+@mixin truncate-text ($width) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: $width;
+}
+
+// 圆角
+@mixin circle {
+  border-radius: 50%;
+}
+
+%mCenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+%posCenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+%bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+%bg-cover {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+%bg-contain {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

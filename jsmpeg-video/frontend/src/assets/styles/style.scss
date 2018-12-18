@@ -1,0 +1,74 @@
+@charset "UTF-8";
+@import "./util.scss";
+
+// style example ==================
+.layer__close {
+  position: absolute;
+  top: 1vw;
+  right: 2vw;
+  color: #aaa;
+  font-size: 120%;
+}
+
+.layer__example {
+  width: 100%;
+  height: 100%;
+
+  .layer__content {
+    position: relative;
+    @extend %flexbox-centering;
+    width: 80vw;
+    height: 90vw;
+    @extend %mCenter;
+    margin-top: 20vh;
+    box-shadow: 0 0 10px #cdcdcd;
+    background: #fff;
+    color: #000;
+  }
+
+  .btn__confirm {
+    @extend %posCenter;
+    bottom: 2%;
+  }
+}
+
+.page {
+  background: #fff;
+}
+
+.page-flex {
+  @extend %flexbox-centering;
+  width: 100vw;
+  height: 100vh;
+}
+
+.logo {
+  @include size(196, 96);
+}
+
+.btn {
+  $btnHeight: rem(60);
+  width: rem(200);
+  height: $btnHeight;
+  color: #000;
+  border: 1px solid #cdcdcd;
+  border-radius: rem(60);
+  text-align: center;
+  line-height: $btnHeight;
+}
+
+.btn__next {
+  @extend %posCenter;
+  bottom: 10vh;
+}
+
+.btn__layer-example {
+  position: absolute;
+  top: 2vh;
+  right: 2vh;
+  font-size: 120%;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+// style example ===============
