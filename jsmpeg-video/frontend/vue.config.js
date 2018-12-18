@@ -207,7 +207,7 @@ module.exports = {
     })
 
     config.module.rules.push({
-      test: /\.ts$/,
+      test: /\.ts|\.mpg$/,
       loader: 'file-loader'
     })
   }

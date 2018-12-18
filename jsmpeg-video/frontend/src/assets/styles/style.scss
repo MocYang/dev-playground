@@ -71,4 +71,20 @@
   text-decoration: underline;
 }
 
+
+.flex {
+  @extend %flexbox-centering;
+  //width: 100vw;
+  //height: 100vh;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
 // style example ===============
