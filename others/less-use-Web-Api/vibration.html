@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vibration</title>
+</head>
+<style>
+  button {
+    font-size: 32px;
+  }
+</style>
+<body>
+<div class="app">
+  <p>
+    <button class="btn1">振动200ms</button>
+  </p>
+
+  <p>
+    <button class="btn4">振动10000</button>
+    <button class="btn5">停止振动</button>
+  </p>
+  
+  <p>
+    <button class="btn2">振荡</button>
+    <button class="btn3">停止振动</button>
+  </p>
+</div>
+<script>
+  window.onload = () => {
+    const $btn1 = document.querySelector('.btn1')
+    const $btn2 = document.querySelector('.btn2')
+    const $btn3 = document.querySelector('.btn3')
+    const $btn4 = document.querySelector('.btn4')
+    const $btn5 = document.querySelector('.btn5')
+    
+    const Vibrate = {
+      exec: (param) => window.navigator.vibrate(param)
+    }
+    $btn1.onclick = () => {
+      Vibrate.exec(200)
+    }
+    
+    $btn2.onclick = () => {
+      Vibrate.exec([100, 120, 100, 120, 100, 120, 100, 120])
+    }
+    
+    // 传0，[0],[], [0,0,0,0]来停止振动
+    $btn3.onclick = () => {
+      Vibrate.exec(0)
+    }
+
+    $btn4.onclick = () => {
+      Vibrate.exec(10000)
+    }
+
+    // 传0，[0],[], [0,0,0,0]来停止振动
+    $btn5.onclick = () => {
+      Vibrate.exec(0)
+    }
+  }
+</script>
+</body>
+</html>

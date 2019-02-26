@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>page visibility change</h1>
+<script>
+  window.addEventListener('visibilitychange', () => {
+    const pageState = document.visibilityState
+    switch (pageState) {
+      // 网页预渲染 但内容不可见, chrome72, firefox64没有触发
+      case 'prerender':
+        console.log('Tab呈现之前')
+        break
+
+      // 内容不可见 处于后台状态，最小化，或者锁屏状态
+      case 'hidden':
+        console.log('Tab被隐藏了')
+        document.title = 'tab隐藏'
+        break
+
+      // 内容可见
+      case 'visible':
+        console.log('Tab被聚焦了')
+        document.title = '页面被聚焦'
+        break
+
+      // 文档被卸载
+      case 'unloaded':
+        console.log('文档已被卸载')
+    }
+  })
+</script>
+</body>
+</html>

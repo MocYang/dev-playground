@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>device orientation</title>
+  <style>
+    * {
+      font-size: 32px;
+    }
+
+    .cube-box {
+      position: absolute;
+      top: 50vh;
+      left: 50%;
+      width: 40vw;
+      height: 40vw;
+      margin-left: -20vw;
+      margin-top: -20vw;
+      transform-style: preserve-3d;
+    }
+
+    .cube-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40vw;
+      height: 40vw;
+      margin-left: -20vw;
+      margin-top: -20vw;
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      backface-visibility: visible;
+      transform: rotateY(20deg) rotateX(10deg);
+    }
+
+    .cube {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      margin-top: -20vw;
+      margin-left: -20vw;
+      background: rgba(230, 230, 230, .5);
+      border: 2px solid blue;
+      transform-style: preserve-3d;
+      text-align: center;
+      line-height: 40vw;
+    }
+
+    .cube-a {
+      transform: translateZ(20vw);
+    }
+
+    .cube-b {
+      transform-origin: left center;
+      transform: translateZ(20vw) translateX(40vw) rotateY(90deg);
+    }
+
+    .cube-c {
+      transform: translateZ(-20vw);
+    }
+
+    .cube-d {
+      transform-origin: right center;
+      transform: translateZ(20vw) translateX(-40vw) rotateY(-90deg);
+    }
+
+    .cube-e {
+      transform-origin: bottom center;
+      transform: translateZ(20vw) translateY(-40vw) rotateX(90deg);
+    }
+
+    .cube-f {
+      transform-origin: top center;
+      transform: translateZ(20vw) translateY(40vw) rotateX(-90deg);
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <p>
+    <span>设备沿着X轴的旋转角度</span> <span class="beta"></span>
+  </p>
+  <p>
+    <span>设备沿着Y轴的旋转角度</span> <span class="gamma"></span>
+  </p>
+  <p>
+    <span>设备沿着Z轴的旋转角度</span> <span class="alpha"></span>
+  </p>
+
+  <div class="cube-box">
+    <div class="cube-wrapper">
+      <div class="cube cube-a">A</div>
+      <div class="cube cube-b">B</div>
+      <div class="cube cube-c">C</div>
+      <div class="cube cube-d">D</div>
+      <div class="cube cube-e">E</div>
+      <div class="cube cube-f">F</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const $beta = document.querySelector('.beta')
+  const $gamma = document.querySelector('.gamma')
+  const $alpha = document.querySelector('.alpha')
+
+  const $cubeWrapper = document.querySelector('.cube-wrapper')
+  window.addEventListener('deviceorientation', e => {
+    const beta = e.beta // X轴
+    const gamma = e.gamma // Y轴
+    const alpha = e.alpha // Z轴
+
+    $beta.innerHTML = beta
+    $gamma.innerHTML = gamma
+    $alpha.innerHTML = alpha
+
+    $cubeWrapper.style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg) rotateZ(${alpha}deg)`
+  })
+</script>
+</body>
+</html>

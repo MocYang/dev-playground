@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>clipboard</title>
+  <style>
+    * {
+      font-size: 32px;
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <h2>复制粘贴纯文本</h2>
+  <p class="content">要复制到剪贴板的内容</p>
+
+  <p>
+    <button class="btn1">复制内容到剪贴板</button>
+  </p>
+
+  <p>
+    <button class="btn2">从剪贴板粘贴内容</button>
+  </p>
+
+  <p>
+    <button class="btn3">从剪贴板粘贴图片</button>
+  </p>
+  <ul id="content-list"></ul>
+
+  <br>
+  <hr>
+  <br>
+</div>
+<script>
+  const $content = document.querySelector('.content')
+  const $contentList = document.querySelector('#content-list')
+  const $btnCopy = document.querySelector('.btn1')
+  const $btnPaste = document.querySelector('.btn2')
+  const $btnPasterImg = document.querySelector('.btn3')
+
+
+  const writeToClipboard = async (content) => {
+    if (window.navigator.clipboard) {
+      try {
+        await window.navigator.clipboard.writeText(content)
+        alert('内容已复制到剪贴板')
+      } catch (e) {
+        console.error('content copy to clipboard error: ', e)
+      }
+     
+    } else {
+      alert('browser dose not support Clipboard Api, or not in unsecurity env.')
+    }
+  }
+  
+  const getClipboardContent = async () => {
+    if (window.navigator.clipboard) {
+      try {
+        // const content = await navgator.clipboard.readText()
+        return (await window.navigator.clipboard.readText())
+      } catch (e) {
+        console.error('read clipboard error: ', e)
+      }
+    } else {
+      alert('browser dose not support Clipboard Api, or not in unsecurity env.')
+      return null
+    }
+  }
+  
+  const readImageFromClipboard = async () => {
+    if (window.navigator.clipboard) {
+      try {
+        // chrome,firefox都不支持
+        return (await window.navigator.clipboard.read())
+      } catch (e) {
+        console.error('clipboard.read() error. ', e)
+      }
+    }
+  }
+
+  $btnCopy.onclick = () => {
+    const content = $content.innerHTML
+    writeToClipboard(content)
+  }
+
+  $btnPaste.onclick = async () => {
+    const content = await getClipboardContent()
+    console.log('paste content: ', content)
+  }
+  
+  $btnPasterImg.onclick = async () => {
+    const data = await readImageFromClipboard()
+    console.dir(data)
+  }
+
+  // 监听粘贴事件
+  document.addEventListener('paste', async (e) => {
+    e.preventDefault()
+    const content = await getClipboardContent()
+    console.log('paste content: ', content)
+    const $li = document.createElement('li')
+    $li.innerHTML = content
+    $contentList.appendChild($li)
+    console.log(e)
+  })
+  
+</script>
+</body>
+</html>
