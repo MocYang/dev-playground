@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>battery status</title>
+</head>
+<body>
+<script>
+  if (navigator.getBattery) {
+    navigator.getBattery().then(battery => {
+      console.log(battery)
+      const {
+        // 是否正在充电
+        charging,
+        
+        // 充满电所需时间
+        chargingTime,
+        
+        // 当前电量可使用时间
+        dischargingTime,
+        
+        // 剩余电量
+        level,
+      } = battery
+    })
+  }
+</script>
+</body>
+</html>

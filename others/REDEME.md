@@ -20,7 +20,7 @@
         
         [Unblocking Clipboard Access](https://developers.google.com/web/updates/2018/03/clipboardapi)
     
-    * 
+    * battery status(电池状态)
 
 ## 待验证
-* Clipboard剪贴板
+* Clipboard剪贴板在手机上的表现
