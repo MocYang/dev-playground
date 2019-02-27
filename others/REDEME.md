@@ -24,3 +24,9 @@
 
 ## 待验证
 * Clipboard剪贴板在手机上的表现
+
+## todo list
+* [web animation api](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Animations_API)
+* [web audio](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API)
+
+## 更多可用web API 参考[MDN目录](https://developer.mozilla.org/zh-CN/docs/Web/API)
