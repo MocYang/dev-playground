@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>css shapes</title>
+  <link rel="stylesheet" href="./style/normalize.css">
+  <link rel="stylesheet" href="./style/css-shapes.css">
+</head>
+<body>
+<div class="box">
+  <div class="wrapper">
+    <h1>关键字属性</h1>
+    <div class="show">
+      <span class="shape keyword-shape"></span>
+      <p>shape-outside的CSS 属性定义了一个可以是非矩形的形状，相邻的内联内容应围绕该形状进行包装。 默认情况下，内联内容包围其边距框;
+        shape-outside提供了一种自定义此包装的方法，可以将文本包装在复杂对象周围而不是简单的框中。</p>
+    </div>
+    <h2>切换shape-outside 属性值</h2>
+
+    <div class="btn-group keyword-btns">
+      <label data-attr="none" for="none">
+        <input data-attr="none" type="radio" id="none" name="keyword-btns" checked>
+        none
+      </label>
+      <label data-attr="margin-box" for="margin-box">
+        <input data-attr="margin-box" type="radio" id="margin-box" name="keyword-btns">
+        margin-box
+      </label>
+      <label data-attr="border-box" for="border-box">
+        <input data-attr="border-box" type="radio" id="border-box" name="keyword-btns">
+        border-box
+      </label>
+      <label data-attr="padding-box" for="padding-box">
+        <input data-attr="padding-box" type="radio" id="padding-box" name="keyword-btns">
+        padding-box
+      </label>
+      <label data-attr="content-box" for="content-box">
+        <input data-attr="content-box" type="radio" id="content-box" name="keyword-btns">
+        content-box
+      </label>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <h1>形状函数</h1>
+    <div class="show">
+      <span class="shape shape-shape"></span>
+      <p>shape-outside的CSS 属性定义了一个可以是非矩形的形状，相邻的内联内容应围绕该形状进行包装。 默认情况下，内联内容包围其边距框;
+        shape-outside提供了一种自定义此包装的方法，可以将文本包装在复杂对象周围而不是简单的框中。</p>
+    </div>
+    
+    <h2>切换shape-outside 属性值</h2>
+    <div class="btn-group shape-btns">
+      <label for="circle">
+        <input data-attr="circle()" type="radio" id="circle" name="shape-btns" checked>
+        circle()
+      </label>
+      <label for="circle(60%)">
+        <input data-attr="circle(60%)" type="radio" id="circle(60%)" name="shape-btns">
+        circle(60%)
+      </label>
+      <label for="circle(at 60% 50%)">
+        <input data-attr="circle(at 60% 50%)" type="radio" id="circle(at 60% 50%)" name="shape-btns">
+        circle(at 60% 50%)
+      </label>
+      <label for="circle(50% at 0% 50%)">
+        <input data-attr="circle(50% at 0% 50%)" type="radio" id="circle(50% at 0% 50%)" name="shape-btns">
+        circle(50% at 0% 50%)
+      </label>
+      <label for="circle(50px at 80px 80px)">
+        <input data-attr="circle(50px at 80px 80px)" type="radio" id="circle(50px at 80px 80px)" name="shape-btns">
+        circle(50px at 80px 80px)
+      </label>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.onload = () => {
+    const $radioBtns = document.querySelectorAll('input[type="radio"]')
+    const setKeywordShapeAttributes = ($node, attr) => {
+      $node.style.shapeOutside = attr
+      $node.style.clipPath = attr
+    }
+
+    Array.from($radioBtns).forEach(function ($radio) {
+      $radio.onclick = function () {
+        const radio = this
+        const $shape = radio.parentNode.parentNode.parentNode.querySelector('.shape')
+        setKeywordShapeAttributes($shape, radio.getAttribute('data-attr'))
+      }
+    })
+  }
+</script>
+</body>
+</html>

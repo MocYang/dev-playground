@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>event-loop</title>
+</head>
+<body>
+  <div id="node"></div>
+  <script>
+    const $node = document.querySelector('#node')
+    $node.onclick = () => {
+      setTimeout(() => {
+        $node.textContent = '123456'
+      }, 0)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+body,h1,h2,h3,h4,blockquote,p,dl,dt,dd,ul,ol,li,th,td,form,fieldset,legend,button,input,textarea,span{margin:0;padding:0}body,button,input,select,textarea{font:12px/1.75 '微软雅黑','宋体',arial,sans-serif}
+button,input,select,textarea,h1,h2,h3,h4{font-size:100%;vertical-align:middle}em,i{font-style:normal}ol,ul,li{list-style:none}table{border-collapse:collapse;border-spacing:0}img,fieldset{border:0;vertical-align:middle}
+.clear{font-size:0; line-height:0; height:0; overflow:hidden; clear:both; visibility:hidden}
+a{color:#000;text-decoration:none;outline:none}a:hover{color:#f60;text-decoration:none}
+.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }
+.clearfix { *zoom:1; }
+*{
+  box-sizing: border-box;
+}
+.f_left{
+  float: left;
+}
+.f_right{
+  float: right;
+}

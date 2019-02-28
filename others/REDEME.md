@@ -22,11 +22,27 @@
     
     * battery status(电池状态)
 
+## js专题
+* debounce防抖函数
+   
+   参考
+   
+   1. 2009年，debounce第一次出现的帖子[http://unscriptable.com/2009/03/20/debouncing-javascript-methods/](http://unscriptable.com/2009/03/20/debouncing-javascript-methods/)
+   1. 动态的演示说明[https://css-tricks.com/debouncing-throttling-explained-examples/](https://css-tricks.com/debouncing-throttling-explained-examples/)
+   1. [https://github.com/mqyqingfeng/Blog/issues/22](https://github.com/mqyqingfeng/Blog/issues/22)
+
+
+* throttle节流函数
+
+    参考
+    1. [https://github.com/mqyqingfeng/Blog/issues/26](https://github.com/mqyqingfeng/Blog/issues/26)
 ## 待验证
 * Clipboard剪贴板在手机上的表现
 
 ## todo list
 * [web animation api](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Animations_API)
 * [web audio](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API)
+* throttle节流
 
 ## 更多可用web API 参考[MDN目录](https://developer.mozilla.org/zh-CN/docs/Web/API)
+

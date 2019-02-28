@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>task microtask test</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .outer,
+    .outer2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+      background: #cd0000;
+    }
+
+    .inner,
+    .inner2 {
+      width: 100px;
+      height: 100px;
+      background: #00cd00;
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+  <div class="inner"></div>
+</div>
+
+<div class="outer2">
+  <div class="inner2"></div>
+</div>
+<script>
+  const doc = document
+  const $outer = doc.querySelector('.outer')
+  const $inner = doc.querySelector('.inner')
+
+  const $outer2 = doc.querySelector('.outer2')
+  const $inner2 = doc.querySelector('.inner2')
+
+  new MutationObserver(() => {
+    console.log('mutate')
+  }).observe($outer, {
+    attributes: true
+  })
+
+  const handler = (e) => {
+    console.log('click: ', e.currentTarget.getAttribute('class'))
+
+    setTimeout(() => {
+      console.log('setTimeout')
+    }, 0)
+
+    Promise.resolve().then(() => {
+      console.log('Promise')
+    })
+
+    $outer.setAttribute('data-id', Math.random() + '')
+  }
+
+  $outer.addEventListener('click', handler)
+  $inner.addEventListener('click', handler)
+
+  /**
+   * log:
+   *  click:    inner
+   *  Promise
+   *  mutate
+   *  click:    outer
+   *  Promise
+   *  mutate
+   *  setTimeout
+   *  setTimeout
+   */
+
+  new MutationObserver(() => {
+    console.log('mutate2')
+  }).observe($outer2, {
+    attributes: true
+  })
+
+  const handler2 = (e) => {
+    console.log('click: ', e.currentTarget.getAttribute('class'))
+
+    setTimeout(() => {
+      console.log('setTimeout')
+    }, 0)
+
+    Promise.resolve().then(() => {
+      console.log('Promise')
+    })
+
+    $outer2.setAttribute('data-id', Math.random() + '')
+  }
+
+  $outer2.addEventListener('click', handler2)
+  $inner2.addEventListener('click', handler2)
+
+  // $inner2.click()
+
+  /**
+   * log:
+   *  click: inner2
+   *  click: outer2
+   *  Promise
+   *  mutate    // 只触发一次mutate是因为，inner2触发的mutate padding了，outer2的mutate不会入队列
+   *  Promise
+   *  setTimeout
+   *  setTimeout
+   */
+
+  Promise.resolve().then(() => console.log('promise1'))
+  setTimeout(() => {
+    console.log('setTimeout1')
+    Promise.resolve().then(() => console.log('promise2'))
+  })
+  setTimeout(() => console.log('setTimeout2'))
+
+  /**
+   * 
+   * log:
+   *  promise1
+   *  setTimeout1
+   *  promise2
+   *  setTimeout2
+   */
+</script>
+</body>
+</html>
