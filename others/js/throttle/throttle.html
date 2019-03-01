@@ -59,7 +59,7 @@
 <div>
   <button id="cancel">cancel</button>
 </div>
-<script src="../throttle.js"></script>
+<script src="throttle.js"></script>
 <script>
   const $box = document.querySelector('.box')
   const $counter = document.querySelector('.counter')
@@ -70,7 +70,7 @@
     console.log(e)
     $counter.textContent = ++counter
   }
-  const handler = throttle(handleMouseMove, 1000, true)
+  const handler = throttle(handleMouseMove, 500, true)
 
   $box.onmousemove = handler
 
