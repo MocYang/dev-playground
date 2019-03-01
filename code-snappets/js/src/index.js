@@ -4,5 +4,5 @@
 // import './browser.js'
 //
 // import './test/browser'
-import './test/utils'
-
+// import './test/utils'
+import './test/closure'
