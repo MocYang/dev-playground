@@ -5,4 +5,4 @@
 //
 // import './test/browser'
 // import './test/utils'
-import './test/closure'
+import './test'

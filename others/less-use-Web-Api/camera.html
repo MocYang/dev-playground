@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding:0;
+    }
+  </style>  
+</head>
+<body>
+  <div class="app">
+    <video src="" id="video"></video>
+  </div>
+
+  <script>
+    const navigator = window.navigator
+    const winWidth = window.innerWidth
+    const winHeight = window.innerHeight
+    navigator.getUserMedia = navigator.getUserMedia ||
+      navigator.webkitGetUserMedia ||
+      navigator.mozGetUserMedia;
+    
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({
+        audio: true,
+        video: {
+          width: winWidth,
+          height: winHeight
+        }
+      }).then(stream => {
+        var video = document.querySelector('video')
+        video.srcObject = stream;
+        video.onloadedmetadata = function(e) {
+          video.play()
+        }
+      })
+    } else if (navigator.getUserMedia) {
+      navigator.getUserMedia({ audio: true, video: { width: winWidth, height: winHeight } },
+        function(stream) {
+          var video = document.querySelector('video')
+          video.srcObject = stream;
+          video.onloadedmetadata = function(e) {
+            video.play()
+          }
+        },
+        function(err) {
+          console.log("The following error occurred: " + err.name);
+        }
+      );
+    } else {
+      console.log("getUserMedia not supported");
+    }
+  </script>
+</body>
+</html>
