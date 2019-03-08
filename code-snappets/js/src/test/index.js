@@ -50,3 +50,18 @@
 // setTimeout(() => {
 //   foo(name)
 // }, 1000)
+
+const test = async () => {
+  const res = await fetch('https://www.baidu.com')
+  return res
+}
+
+const test2 = async () => {
+  const res = await fetch('https://www.baidu.com')
+  return res
+}
+
+test()
+test2()
+let a = 1
+console.log(a)
