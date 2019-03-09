@@ -4,7 +4,20 @@ import Page from './utils/Page'
 
 export default class PageValue extends Component {
   state = {
-    info: {},
+    name: '',
+    age: ''
+  }
+
+  handleNameChange = (e) => {
+    this.setState({
+      name: e.target.value
+    })
+  }
+
+  handleAgeChange = (e) => {
+    this.setState({
+      age: e.target.value
+    })
   }
 
   submit = () => {
@@ -14,14 +27,10 @@ export default class PageValue extends Component {
   render () {
     return (
       <Page>
-        <Value initial={1}>
+        <Value initial={this.state.name} onChange={this.handleNameChange}>
           {({ set, reset, value }) => (
             <Fragment>
-              <select name="" id="" value={value} onChange={set}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
+              <input type="text" value={value} onChange={set}/>
               <button className="btn__reset" onClick={reset}>reset value</button>
             </Fragment>
           )}

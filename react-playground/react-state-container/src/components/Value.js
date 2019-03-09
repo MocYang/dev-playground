@@ -19,19 +19,21 @@ class Value extends Component {
   }
 
   state = {
-    value: ''
+    value: this.props.initial
   }
 
-  static getDerivedStateFromProps (props, state) {
-    if (props.initial !== state.value) {
-      return {
-        value: props.initial
+  _set = (updater, cb = noop) => {
+    console.dir(updater)
+    const onChange = this.props.onChange || noop
+    this.setState(
+      typeof updater === 'function'
+        ? state => ({value: updater(state.value)})
+        : {value: updater},
+      () => {
+        onChange(this.state.value)
+        cb()
       }
-    }
-  }
-
-  _set = (e) => {
-    console.log('_set emit', e)
+    )
   }
 
   _reset = (e) => {
