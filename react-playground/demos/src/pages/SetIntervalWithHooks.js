@@ -52,8 +52,10 @@ const Comp = () => {
 
   useEffect(() => {
     let id = setInterval(() => {
+      // 此effect值执行一次，因为依赖数组为空，所以，此时的定时器一直运行，因为闭包的关系，count值总是0。
+      console.log('interval running: ', count)
       setCount(count + 1)
-    }, 1000)
+    }, 2000)
 
     return () => {
       console.log('clear interval')
