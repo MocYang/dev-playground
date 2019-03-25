@@ -94,9 +94,8 @@ const reducer = (state, action) => {
   }
 }
 
-const Comp = () => {
+const Comp = function () {
   const [ state, dispatch ] = useReducer(reducer, initState)
-
   useEffect(() => {
     const id = setInterval(() => {
       dispatch({ type: 'click' })
@@ -104,7 +103,6 @@ const Comp = () => {
 
     return () => clearInterval(id)
   }, [dispatch])
-
   return (
     <div>
       <p>count: {state.count}</p>
