@@ -4,7 +4,6 @@ import sys
 
 print(sys.getrecursionlimit())  # default 1000
 
-
 # function annotations(注解)
 # def func(a: 'spam', b: (1, 10), c: float) -> float:
 #     return a + b + c
@@ -23,7 +22,5 @@ print(sys.getrecursionlimit())  # default 1000
 # print(func1(1, 2, 2))  # 4.0
 
 # anonymous functions: lambda.
-
-
 
 
