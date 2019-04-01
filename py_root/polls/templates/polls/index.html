@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Poll app index page</title>
+</head>
+<body>
+{% if question_list %}
+<ul>
+  {% for question in question_list %}
+  <li>
+    <span>{{ question.id }}</span> 
+    <a href="{% url 'polls:details' question.id %}">{{ question.question_text }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+</body>
+</html>

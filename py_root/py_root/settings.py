@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
     'react_admin_python.apps.ReactAdminPythonConfig',
     'django.contrib.admin',
     'django.contrib.auth',
