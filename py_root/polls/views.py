@@ -31,7 +31,7 @@ class IndexView(generic.ListView):
     context_object_name = 'question_list'
 
     def get_queryset(self):
-        return Question.objects.filter(pub_date__lte=timezone.now()).all()
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('id')
 
 
 class DetailsView(generic.DetailView):
