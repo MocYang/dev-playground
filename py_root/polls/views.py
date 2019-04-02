@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
-
+from django.utils import timezone
 # Create your views here.
 from .models import Question, Choice
 
@@ -31,12 +31,15 @@ class IndexView(generic.ListView):
     context_object_name = 'question_list'
 
     def get_queryset(self):
-        return Question.objects.all()
+        return Question.objects.filter(pub_date__lte=timezone.now()).all()
 
 
 class DetailsView(generic.DetailView):
     model = Question
     template_name = 'polls/details.html'
+
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now())
 
 
 class ResultsView(generic.DetailView):
