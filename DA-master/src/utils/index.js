@@ -17,4 +17,31 @@ const createRandomList = (number, range = [0, number], sort = false) => {
   return sort ? list.sort((a, b) => a - b) : list
 }
 
+const getRuntimeOnClient = (cb) => {
+  const start = window.performance.now()
+  cb()
+  const end = window.performance.now()
+
+  const runtimeOrigin = end - start
+
+  return `${cb.name } run ${runtimeOrigin} ms.`
+}
+
+const getRuntimeOnNodejs = (cb) => {
+  const hrStart = process.hrtime()
+  cb()
+  const hrEnd = process.hrtime(hrStart)
+
+  return `${cb.name} run ${hrEnd[0] ? hrEnd[0] / 1000000 : ''} ${hrEnd[1] / 1000000} ms.`
+}
+
+const getRuntime = (cb) => {
+  if (typeof window !== "undefined") {
+    return getRuntimeOnClient(cb)
+  }
+
+  return getRuntimeOnNodejs(cb)
+}
+
+
 // modules.export = createRandomList
