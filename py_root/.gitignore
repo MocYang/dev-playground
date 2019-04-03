@@ -617,3 +617,5 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/python,pycharm,webstorm,visualstudio,visualstudiocode
+
+# sql
