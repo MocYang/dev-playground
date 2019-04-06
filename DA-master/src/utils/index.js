@@ -44,4 +44,4 @@ const getRuntime = (cb) => {
 }
 
 
-// modules.export = createRandomList
+module.exports = createRandomList
