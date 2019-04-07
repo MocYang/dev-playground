@@ -1,10 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>长列表渲染</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+    }
+
+    .list {
+      display: flex;
+      margin: auto;
+      height: 50vh;
+      width: 400px;
+    }
+
+    ul {
+      width: 80%;
+      height: 100%;
+      margin: auto;
+      overflow: auto;
+    }
+  </style>
 </head>
 <body>
-$END$
+<div class="list">
+  <ul></ul>
+</div>
+
+<script>
+  let total = 100000
+  let perView = 1000
+  let counter = 0
+  const $ul = document.querySelector('ul')
+  window.addEventListener('DOMContentLoaded', () => {
+    console.log('dom content loaded.')
+    const render = () => {
+      const $fragment = document.createDocumentFragment()
+      for (let i = 0; i < perView; i++) {
+        const $li = document.createElement('li')
+        $li.innerText = counter * perView + i
+        $fragment.appendChild($li)
+      }
+      $ul.appendChild($fragment)
+      counter++
+      loop()
+    }
+
+    const loop = () => {
+      if (counter < total / perView) {
+        window.requestAnimationFrame(render)
+        console.log('render to: ', (counter + 1) * perView)
+      } else {
+        console.log('all item rendered.')
+      }
+    }
+    loop()
+  })
+</script>
 </body>
 </html>
