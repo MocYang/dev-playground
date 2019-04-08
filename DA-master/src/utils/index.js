@@ -28,11 +28,10 @@ const getRuntimeOnClient = (cb) => {
 }
 
 const getRuntimeOnNodejs = (cb) => {
-  const hrStart = process.hrtime()
+  const start = Date.now()
   cb()
-  const hrEnd = process.hrtime(hrStart)
-
-  return `${cb.name} run ${hrEnd[0] ? hrEnd[0] / 1000000 : ''} ${hrEnd[1] / 1000000} ms.`
+  const end = Date.now()
+  return `${cb.name} runs: ${(end - start) / 1000}s`
 }
 
 const getRuntime = (cb) => {
@@ -44,4 +43,7 @@ const getRuntime = (cb) => {
 }
 
 
-module.exports = createRandomList
+module.exports = {
+  createRandomList,
+  getRuntime
+}
