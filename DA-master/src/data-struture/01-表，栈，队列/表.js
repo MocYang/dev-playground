@@ -13,46 +13,53 @@
  * Node帮助类
  */
 class Node {
-  constructor(element, next = null) {
+  constructor (element, next = null) {
     this.element = element
     this.next = next
   }
 }
 
- /**
-  * 表-抽象类
-  */
- class List {
-  print() {}
+/**
+ * 表-抽象类
+ */
+class List {
+  print () {
+  }
 
-  makeEmpty () {}
+  makeEmpty () {
+  }
 
-  find () {}
+  find () {
+  }
 
-  insert () {}
+  insert () {
+  }
 
-  delete () {}
+  delete () {
+  }
 
-  findIndex () {}
- }
+  findIndex () {
+  }
+}
 
 /**
  * 表的数组实现-略
  */
 
 
- /**
-  * 表的链表实现-同时具有表头和表尾
-  */
+/**
+ * 表的链表实现-同时具有表头和表尾
+ */
 
 class LinkedList extends List {
   constructor () {
     super()
     this.list = this.makeEmpty()
   }
+
   makeEmpty (props) {
     const header = new Node('header', null)
-    return { header }
+    return {header}
   }
 
   isEmpty () {
@@ -60,7 +67,7 @@ class LinkedList extends List {
   }
 
   isLast (node) {
-    return node.next === null
+    return node && node.next === null
   }
 
   /**
@@ -77,57 +84,60 @@ class LinkedList extends List {
       return null
     }
 
-    while (current.element !== element && current.next) {
+    while (current.next && current.element !== element) {
       current = current.next
     }
 
     // 找到表尾了，没有找到返回null
-    if (this.isLast(element) && current.element !== element) {
+    if (current.element !== element) {
       return null
     }
 
     return current
   }
 
+  /**
+   * 删除给定元素
+   * @param element
+   */
   delete (element) {
+    let previous = this.findPrevious(element)
 
-  }
-
-  findPrevious (element) {
-    const header = this.list.header
-
-    // 空表-返回null
-    if (header.next === null) {
+    if (!previous) {
       return null
     }
 
-    let current = header.next
+    let tempNode = previous.next
+    previous.next = tempNode.next
+    tempNode.next = null
+
+    return tempNode
   }
 
-  insert (node) {
-    const header = this.list.header
-    if (header.next === null) {
-      header.next = node
-      return
+  findPrevious (element) {
+    let current = this.list.header
+
+    // 空表-返回null
+    if (current.next === null) {
+      return null
     }
 
-    let current = header.next
-    while (current.next) {
+    while (current.next && current.next.element !== element) {
       current = current.next
     }
 
-    current.next = node
+    // TODO: 如果previous是header指针，决定是否返回
+
+    return current
   }
 
-  destroy () {
-
-  }
-
-  getHeader () {
-
-  }
-
-  getFirst () {
+  /**
+   * 在指定节点前，插入给定元素
+   * @param element
+   * @param node
+   */
+  insert (element, node) {
+    const nodeForInsert = new Node(element)
 
   }
 
@@ -155,4 +165,20 @@ console.log(linkedList);
 // test find
 // console.log(linkedList.find(1))
 // console.log(linkedList.find(2))
-// console.log(linkedList.find(3))
+// console.log(linkedList.find(6))
+
+
+// test delete
+// console.log(linkedList.delete(3))
+// console.log(linkedList.delete(1))
+// console.log(linkedList.delete(5))
+// console.log(linkedList.delete(4))
+// console.log(linkedList.delete(2))
+// console.log(linkedList.delete(2))
+
+// test findPrevious
+// console.log(linkedList.findPrevious(1))
+// console.log(linkedList.findPrevious(2))
+// console.log(linkedList.findPrevious(4))
+// console.log(linkedList.findPrevious(5))
+// console.log(linkedList)
