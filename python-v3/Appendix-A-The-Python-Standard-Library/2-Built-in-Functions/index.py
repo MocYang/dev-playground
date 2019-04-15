@@ -110,82 +110,112 @@
 # 22 filter(func, iterable)
 
 
-# 23 float()
+# 23 float([x])
 
 
-# 24 format()
+# 24 format(value[, format_spec])
 
 
-# 25 frozenset()
+# 25 frozenset(iterable)
 
 
-# 26 getattr()
+# 26 getattr(object, name[, default])
 
 
 # 27 globals()
 
 
-# 28 hasattr()
+# 28 hasattr(object, name)
 
 
-# 29 hash()
+# 29 hash(object)
+# print(hash(1), hash(1.0))   # 1, 1
+# print(hash(dict([('a', 1), ('b', 2)]))) # TypeError: unhashable type: 'dict'
 
 
-# 30 help()
+# 30 help([object])
 
 
-# 31 hex()
+# 31 hex(x)
 
 
-# 32 id()
+# 32 id(object)
 
 
-# 33 input()
+# 33 input(prompt)
 
 
-# 34 int()
+# 34 int([x[, base=10]])
 
 
-# 35 isinstance()
+# 35 isinstance(object, classinfo)
+# def func(): pass
+#
+#
+# print(type(func))   # <class 'function'>
+# print(isinstance(func, function)) # ??
 
 
-# 36 issubclass()
+# 36 issubclass(class, classinfo)
 
 
-# 37 iter()
+# 37 iter(object[, sentinel])
 
 
-# 38 len()
+# 38 len(s)
 
 
-# 39 list()
+# 39 list([iterable])
 
 
 # 40 locals()
+# print(locals() == globals())    # True
+
+# 41 map(func, iterable, ...)
 
 
-# 41 map()
+# 42 max(iterable, *[, key, default]) ??
+# 42 max(arg1, arg2, *args[, key])
+# list_id = [
+#     {
+#         'id': 1
+#     },
+#     {
+#         'id': 2
+#     },
+#     {
+#         'id': 3
+#     }
+# ]
+#
+# print(max(list_id, key=lambda x: x['id']))
 
 
-# 42 max()
+# 43 memoryview(obj)
+# print(memoryview(bytes([12, 31])))  # <memory at 0x0000015027BFDE88>
+# print(bytes([12, 31]))  # b'\x0c\x1f'
+
+# 44 min(iterable, *[, key, default])
+# 44 min(arg1, agr2, *args[, key, default])
 
 
-# 43 memoryview()
+# 45 next(iterator[, default])
+# gen_list = (x for x in range(1, 3))
+# print(next(gen_list, 100))  # 1
+# print(next(gen_list, 100))  # 2
+# print(next(gen_list, 100))  # 100
+# print(next(gen_list, 100))  # 100
 
 
-# 44 min()
+# 46 object() - class
 
 
-# 45 next()
+# 47 oct(int)
 
 
-# 46 object()
+# 48 open(file, mode='r', buffering=-1, encoding=None)
+# mode: r, w, b
 
-
-# 47 oct()
-
-
-# 48 open()
 
 
 # 49 ord()
