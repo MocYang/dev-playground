@@ -112,6 +112,7 @@ def get_odd_number_list_with_3(upper_limit):
             yield
         elif int(i) > upper_limit - chunk_size and int(i) >= last_item:
             print_count()
+            print('end i: ', i)
             yield
 
 
