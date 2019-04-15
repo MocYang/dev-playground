@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import '../assets/utils'
+
 export interface HelloProps {
   compiler: string;
   framework: string;
@@ -8,7 +10,7 @@ export interface HelloProps {
 export const Hello = (props: HelloProps) => {
   return (
     <h2>
-      hello from {props.compiler} {props.framework}
+      hello from {props.compiler} {props.framework} .
     </h2>
   )
 }

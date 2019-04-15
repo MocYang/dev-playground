@@ -18,8 +18,8 @@ module.exports = {
     noInfo: true,
     quiet: true,
     overlay: true,
-    index: 'dist/index.html',
-    openPage: 'dist/index.html'
+    // index: 'dist/index.html',
+    // openPage: 'dist/index.html'
   },
 
   resolve: {
