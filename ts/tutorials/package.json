@@ -1,0 +1,12 @@
+{
+  "name": "tutorials",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc ./src/main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
