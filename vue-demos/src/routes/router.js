@@ -5,6 +5,7 @@ import VisibleInView from '@/pages/VisibleInView'
 import Previewer from '@/pages/Previewer'
 import Index from '@/pages/Index'
 import WebpackSprites from '@/pages/WebpackSprite'
+import TestIf from '../pages/TestIf'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/webpack-sprites',
       name: 'WebpackSprites',
       component: WebpackSprites
+    },
+    {
+      path: '/test-if',
+      name: 'TestIf',
+      component: TestIf
     }
   ]
 })
