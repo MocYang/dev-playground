@@ -85,5 +85,26 @@
 //
 // const myClock = new Clock(12, 3)
 
+//================== Generic======================
+function identity<T>(arg: T): T {
+  return arg
+}
 
+let output1 = identity<string>('hello')
+
+let output2 = identity('he')
+
+console.log(output1, output2)
+
+
+function loggingIdentity<T>(arg: Array<T>): Array<T> {
+  console.log(arg.length)
+  return arg
+}
+
+loggingIdentity([123, 123])
+
+interface GenericIdentity<T> {
+  (args: T): T
+}
 
