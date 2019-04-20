@@ -5,6 +5,7 @@
       <g-slider slide-id="page1" class="page page-list">
         <router-link class="link-elem" to="/wave">水波图</router-link>
         <router-link class="link-elem" to="/wave">问答QA</router-link>
+        <router-link class="link-elem" to="/test-if">test if</router-link>
       </g-slider>
     </g-swiper>
   </div>

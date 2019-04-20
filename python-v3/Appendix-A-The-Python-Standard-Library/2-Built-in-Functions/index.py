@@ -213,69 +213,77 @@
 # 47 oct(int)
 
 
-# 48 open(file, mode='r', buffering=-1, encoding=None)
+# 48 open(file, mode='r', buffering=-1, encoding=None， errors=None, newline=None, closefd=True, opener=None)
 # mode: r, w, b
 
 
-
-# 49 ord()
-
-
-# 50 pow()
+# 49 ord(c)
 
 
-# 51 print()
+# 50 pow(x, y[, z]) == (x ** y % z)
 
 
-# 52 property()
+# 51 print(*object, sep='', end='\n', file=sys.stdout, flush=False)
 
 
-# 53 range()
+# 52 property(fget, fset, fdel, doc=None)
 
 
-# 54 repr()
+# 53 range(stop)
+# 53 range(start, stop[, step])
 
 
-# 55 reversed()
+# 54 repr(object)
 
 
-# 56 round()
+# 55 reversed(deq)
 
 
-# 57 set()
+# 56 round(number[, ndigit])
+# print(round(12.22323, 2))   # 12.22
+# print(round(12.22523, 2))   # 12.23
+# print(round(12123.22523, -1))   # 12120.0
 
 
-# 58 setattr()
+# 57 set(object) - class
+# print(set((1, 2, 3)))   # {1, 2, 3}
 
 
-# 59 slice()
+# 58 setattr(object, name, value)
 
 
-# 60 sorted(0
+# 59 slice(stop)
+# 59 slice(start, stop[, step])
 
 
-# 61 staticmethod()
+# 60 sorted(iterate, *, key=None, reverse=False)
+# print(list(sorted([2, 1, 3])))
 
 
-# 62 str()
+# 61 @staticmethod()
 
 
-# 63 sum()
+# 62 str(object='')
+# 62 str(object=b'', encoding='utf-8', errors='strict')
 
 
-# 64 super()
+# 63 sum(iterable[, start])
 
 
-# 65 tuple()
+# 64 super([type[, object-or-type]])
 
 
-# 66 type()
+# 65 tuple([iterable])
 
 
-# 67 vars()
+# 66 type(object)
+# 66 type(name, bases, dict)
 
 
-# 68 zip()
+# 67 vars([object])
+
+
+# 68 zip(*iterable)
 
 
 # 69 __import__()
