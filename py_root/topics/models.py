@@ -1,5 +1,7 @@
 from django.db import models
 
+# import Making query model.
+import topics.Make_queries.models
 
 # Create your models here.
 
