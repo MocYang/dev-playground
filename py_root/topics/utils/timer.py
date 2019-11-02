@@ -62,6 +62,9 @@ def get_factor(number):
     return res
 
 
+# ##################
+#  以下计算可能的排列
+# ###################
 accumulate = 707829217
 
 
@@ -116,8 +119,8 @@ def get_odd_number_list_with_3(upper_limit):
             yield
 
 
-print(list(get_odd_number_list_with_3(866278171)))
-print('filter end.')
+# print(list(get_odd_number_list_with_3(866278171)))
+# print('filter end.')
 
 # 866278171 is result.
 # 3 - count: 441684627

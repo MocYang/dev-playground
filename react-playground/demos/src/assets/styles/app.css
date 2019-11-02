@@ -1,0 +1,26 @@
+.page-main {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.nav {
+  display: inline-block;
+  margin-bottom: 28px;
+  text-decoration: none;
+  font-size: 32px;
+}
+
+.h1,
+.h2,
+.h3,
+.h4 {
+  text-align: center;
+}
+
+.h1 {
+  font-size: 64px;
+}

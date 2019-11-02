@@ -3,7 +3,7 @@
     <span>模板语法</span>
     <p
       v-if="(exchangeProduct.some(function (p) {return p.id == 213 || p.id == 214 || p.id == 216})) &&
-                                  (+ Date.now() < new Date('2019-05-05 0:0:0').getTime())"
+                                  (+Date.now() < new Date('2019-05-05 0:0:0').getTime())"
     >
       saldfjasdf
     </p>

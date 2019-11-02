@@ -68,7 +68,7 @@
     $counter.textContent = ++counter
   }
 
-  const handler = debounce(handleMouseMove, 5000, true)
+  const handler = debounce(handleMouseMove, 1000, false)
 
   $box.onmousemove = handler
 
