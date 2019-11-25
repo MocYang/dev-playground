@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 // import Main from './pages/IframeNoves'
 import PageHome from './pages/Main'
 import PageLazyLoad from './pages/LazyLoad'
+import PageCircleAnimate from './pages/circle-animate'
 
 const App = () => {
   return (
@@ -18,6 +19,10 @@ const App = () => {
 
       <Route path={'/lazyload_js'}>
         <PageLazyLoad />
+      </Route>
+
+      <Route path={'/circle-animate'}>
+        <PageCircleAnimate />
       </Route>
     </Router>
   )
