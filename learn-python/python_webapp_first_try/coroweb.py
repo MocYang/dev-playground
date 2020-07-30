@@ -170,31 +170,31 @@ class RequestHandler(object):
 
                 kw[k] = v
 
-            if self._has_request_arg:
-                kw['request'] = request
+        if self._has_request_arg:
+            kw['request'] = request
 
-            # check required kw
-            if self._required_kw_arg:
-                for name in self._required_kw_arg:
-                    if name not in kw:
-                        return web.HTTPBadRequest('Missing argument: {}'.format(name))
-            logging.info('call with args: {}'.format(str(kw)))
+        # check required kw
+        if self._required_kw_arg:
+            for name in self._required_kw_arg:
+                if name not in kw:
+                    return web.HTTPBadRequest('Missing argument: {}'.format(name))
+        logging.info('call with args: {}'.format(str(kw)))
 
-            try:
-                r = await self._func(**kw)
-                return r
-            except APIError as e:
-                return {
-                    'error': e.error,
-                    'data': e.data,
-                    'message': e.message
-                }
+        try:
+            r = await self._func(**kw)
+            return r
+        except APIError as e:
+            return {
+                'error': e.error,
+                'data': e.data,
+                'message': e.message
+            }
 
 
 def add_static(app):
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
-    app.router.add_static('/static/', path)
-    logging.info('add static {0} => {1}'.format('/static/', path))
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'www/static')
+    app.router.add_static('/www/static/', path)
+    logging.info('add static {0} => {1}'.format('/www/static/', path))
 
 
 def add_route(app, fn):
@@ -221,7 +221,6 @@ def add_route(app, fn):
 
 def add_routes(app, module_name):
     n_index = module_name.rfind('.')
-
     if n_index == (-1):
         mod = __import__(module_name, globals(), locals())
     else:
