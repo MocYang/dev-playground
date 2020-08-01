@@ -127,7 +127,7 @@ class ModelMetaClass(type):
 
         for k, v in attrs.items():
             if isinstance(v, Filed):
-                logging.info(' Found mapping: {} ==> {}'.format(k, v))
+                # logging.info(' Found mapping: {} ==> {}'.format(k, v))
                 mappings[k] = v
                 if v.primary_key:
                     if primary_key:

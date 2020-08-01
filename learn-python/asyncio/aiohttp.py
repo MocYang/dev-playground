@@ -5,3 +5,11 @@
 # @File: aiohttp.py
 # @Software: PyCharm.
 
+import asyncio
+from aiohttp import web
+
+
+async def index(request):
+    await asyncio.sleep(0.5)
+
+

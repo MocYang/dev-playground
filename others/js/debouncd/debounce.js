@@ -14,7 +14,7 @@ function debounce (func, wait, immediate) {
     // 在第一次事件触发的时候就执行，此后触发的事件都不再执行
     if (immediate) {
       if (timer) {
-        clearInterval(timer)
+        clearTimeout(timer)
       } else {
         result = func.apply(context, args)
       }
