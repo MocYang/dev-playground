@@ -11,11 +11,17 @@ from coroweb import get, post
 from aiohttp import web
 
 from model import User, Comment, Blog, next_id
-from apis import APIValueError, APIResourceNotFoundedError, APIError
+from apis import APIValueError, APIResourceNotFoundedError, APIError, APIPermissionError
 from conf.config import configs
 
 COOKIE_NAME = 'awesome_session'
 _COOKIE_KEY = configs.session.secret
+
+
+def check_admin(request):
+    user = request.__user__
+    if user is None:
+        raise APIPermissionError()
 
 
 def user2cookie(user, max_age):
@@ -58,12 +64,13 @@ async def cookie2user(cookie_str):
 
 @get('/')
 async def index(request):
-    summary = '这个家伙很懒, 什么都没有留下...'
-    blogs = [
-        Blog(id='1', name='Test Blog', summary=summary, created_at=time.time() - 120),
-        Blog(id='2', name='Something New', summary=summary, created_at=time.time() - 3600),
-        Blog(id='3', name='Learn Swift', summary=summary, created_at=time.time() - 7200)
-    ]
+    # summary = '这个家伙很懒, 什么都没有留下...'
+    # blogs = [
+    #     Blog(id='1', name='Test Blog', summary=summary, created_at=time.time() - 120),
+    #     Blog(id='2', name='Something New', summary=summary, created_at=time.time() - 3600),
+    #     Blog(id='3', name='Learn Swift', summary=summary, created_at=time.time() - 7200)
+    # ]
+    blogs = await Blog.find_all(order_by='created_at desc')
 
     return {
         '__template__': 'blogs.html',
@@ -128,15 +135,6 @@ async def authenticate(*, email, passwd):
     return r
 
 
-#
-# @get('/api/users')
-# async def api_get_users():
-#     users = await User.find_all(order_by='created_at desc')
-#     for u in users:
-#         u.passwd = '******'
-#
-#     return dict(users=users)
-
 _RE_EMAIL = re.compile(r'^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(\.[a-z0-9\-\_]+){1,4}$')
 _RE_SHA1 = re.compile(r'^[0-9a-f]{40}$')
 
@@ -174,3 +172,64 @@ async def api_register_user(*, email, name, passwd):
     r.content_type = 'application/json'
     r.body = json.dumps(user, ensure_ascii=False).encode('utf-8')
     return r
+
+
+@get('/api/blog/{id}')
+async def api_get_blog(id):
+    blog = await Blog.find(id)
+
+    return blog
+
+
+@get('/blog/{id}')
+async def get_blog(id):
+    blog = await Blog.find(id)
+    comments = await Comment.find_all('blog_id=?', [id], order_by='created_at desc')
+
+    return {
+        '__template__': 'blog_content.html',
+        'STATE': 'RETRIEVE',
+        'id': id,
+        'blog': blog,
+        'comments': comments
+    }
+
+
+@get('/blog/create')
+def blog_new(request):
+    return {
+        '__template__': 'blog_content.html',
+        '__user__': request.__user__,
+        'STATE': 'CREATE',
+        'id': '',
+        'action': '/api/blog',
+        'blog': {},
+        'comments': {}
+    }
+
+
+@post('/api/blog')
+async def api_post_blog(request, *, name, summary, content):
+    check_admin(request)
+
+    if not name or not name.strip():
+        raise APIValueError('name', 'name can not be empty.')
+
+    if not summary or not summary.strip():
+        raise APIValueError('summary', 'summary is required.')
+
+    if not content or not content.strip():
+        raise APIValueError('content', 'content is required.')
+
+    user = request.__user__
+    blog = Blog(
+        user_id=user.id,
+        user_name=user.name,
+        user_image=user.image,
+        name=name.strip(),
+        summary=summary.strip(),
+        content=content.strip()
+    )
+
+    await blog.save()
+    return blog

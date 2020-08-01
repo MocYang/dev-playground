@@ -37,7 +37,7 @@ async def create_pool(loop, **kw):
 
 async def select(sql, args, size=None):
     log(sql, args)
-    print(sql, args)
+    print('in select: ', sql, args)
     global __pool
     async with __pool.get() as conn:
         async with conn.cursor(aiomysql.DictCursor) as cur:
@@ -236,7 +236,6 @@ class Model(dict, metaclass=ModelMetaClass):
         :param primary_key:
         :return:
         """
-        print(cls.__primary_key__)
         rs = await select('{} where `{}`=?'.format(cls.__select__, cls.__primary_key__), [primary_key], 1)
         if len(rs) == 0:
             return None

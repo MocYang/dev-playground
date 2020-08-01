@@ -19,6 +19,7 @@ class APIError(Exception):
     """
     the base APIError
     """
+
     def __init__(self, error, data='', message=''):
         super(APIError, self).__init__(message)
         self.error = error
@@ -40,12 +41,5 @@ class APIResourceNotFoundedError(APIError):
 
 class APIPermissionError(APIError):
 
-    def __init__(self, message):
+    def __init__(self, message=''):
         super(APIPermissionError, self).__init__('permission: forbidden', 'permission', message)
-
-
-
-
-
-
-
