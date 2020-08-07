@@ -9,7 +9,7 @@ use awesome;
 -- ? grant meaning ?
 -- grant select, insert, update, delete on awesome.* to 'www-data'@'localhost' identity by 'www-data';
 
-drop user if exists 'www-data'@'localhost';
+-- drop user if exists 'www-data'@'localhost'; 
 create user 'www-data'@'localhost' identified by 'www-data';
 -- grant select, insert, update, delete on awesome.* to 'www-data'@'localhost';
 grant all on awesome.* to 'www-data'@'localhost';

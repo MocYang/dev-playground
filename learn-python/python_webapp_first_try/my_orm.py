@@ -16,7 +16,6 @@ def log(sql, args=()):
 
 
 async def create_pool(loop, **kw):
-    print('into create_pool')
     logging.info('create database connection pool...')
     global __pool
     __pool = await aiomysql.create_pool(
@@ -32,12 +31,9 @@ async def create_pool(loop, **kw):
         loop=loop
     )
 
-    print('connection success: ', __pool)
-
 
 async def select(sql, args, size=None):
     log(sql, args)
-    print('in select: ', sql, args)
     global __pool
     async with __pool.get() as conn:
         async with conn.cursor(aiomysql.DictCursor) as cur:

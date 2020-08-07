@@ -18,8 +18,10 @@ import my_orm
 from coroweb import add_routes, add_static
 from handlers import COOKIE_NAME, cookie2user
 
-logging.basicConfig(level=logging.INFO)
-
+# logging.basicConfig(level=logging.INFO)
+# FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
+# logging.basicConfig(level=logging.INFO, format=FORMAT)
+logging.getLogger().setLevel(logging.INFO)
 nest_asyncio.apply()
 
 routes = web.RouteTableDef()
@@ -55,7 +57,6 @@ def init_jinja2(app, **kwargs):
 
 async def auth_factory(app, handler):
     async def auth(request):
-        print('Into auth_factory')
         logging.info('check user: {method} {path}'.format(method=request.method, path=request.path))
 
         request.__user__ = None
@@ -76,7 +77,6 @@ async def auth_factory(app, handler):
 
 async def logger_factory(app, handler):
     async def logger(request):
-        print('Into logger_factory')
         logging.info('Request: {method} {path}'.format(method=request.method, path=request.path))
         return await handler(request)
 
@@ -103,8 +103,6 @@ async def response_factory(app, handler):
         logging.info('Response handler...')
 
         res = await handler(request)
-        print('Into response_factory')
-        print(request, res)
 
         if isinstance(res, web.StreamResponse):
             return res
@@ -174,20 +172,21 @@ def datetime_filter(t):
 async def init(loop):
     await my_orm.create_pool(user='root', password='yy123456', db='awesome', loop=loop)
 
-    app = web.Application(loop=loop, middlewares=[logger_factory, auth_factory, response_factory])
+    app = web.Application(
+        # loop=loop,
+        middlewares=[logger_factory, auth_factory, response_factory]
+    )
 
     init_jinja2(app, filters=dict(datetime=datetime_filter))
 
     add_routes(app, 'handlers')
     add_static(app)
 
-    # web.run_app(app)
     runner = web.AppRunner(app)
     await runner.setup()
     srv = await loop.create_server(runner.server, '127.0.0.1', 9000)
     logging.info('Server started at http://127.0.0.1:9000 ...')
     return srv
-
 
 
 loop = asyncio.get_event_loop()
