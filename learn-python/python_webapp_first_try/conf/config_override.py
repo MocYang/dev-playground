@@ -9,6 +9,13 @@ __author__ = 'yangqixin'
 
 configs = {
     'db': {
-        'host': '192.168.0.0'
+        'host': '127.0.0.1',
+        'port': 3306,
+        'user': 'root',
+        'password': 'root',
+        'database': 'awesome'
+    },
+    'session': {
+        'secret': 'ALJLJ0asdf'
     }
 }

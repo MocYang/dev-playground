@@ -17,10 +17,12 @@ from jinja2 import Environment, FileSystemLoader
 import my_orm
 from coroweb import add_routes, add_static
 from handlers import COOKIE_NAME, cookie2user
+from conf import config
 
 # logging.basicConfig(level=logging.INFO)
 # FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
 # logging.basicConfig(level=logging.INFO, format=FORMAT)
+
 logging.getLogger().setLevel(logging.INFO)
 nest_asyncio.apply()
 
@@ -170,7 +172,13 @@ def datetime_filter(t):
 
 
 async def init(loop):
-    await my_orm.create_pool(user='root', password='yy123456', db='awesome', loop=loop)
+    db_conf = config.configs['db']
+    await my_orm.create_pool(
+        user=db_conf['user'],
+        password=db_conf['password'],
+        db=db_conf['database'],
+        loop=loop
+    )
 
     app = web.Application(
         # loop=loop,

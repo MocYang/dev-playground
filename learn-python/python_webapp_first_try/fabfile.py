@@ -34,8 +34,8 @@ newdir = 'www-%s' % get_now()
 
 @task
 def do_build(ctx):
-    includes = ['www/static', 'www/templates', 'favicon.ico', '*.py', 'requirements.txt']
-    excludes = ['test', '.*', '*.pyc', '*.pyo']
+    includes = ['www/static', 'www/templates', 'favicon.ico', '*.py', 'requirements.txt', 'conf', 'DB']
+    excludes = ['test', '.*', '*.pyc', '*.pyo', '__pycache__']
 
     with Connection('mocyang@192.168.3.25', connect_kwargs={'password': 'yy123456'}) as c:
         cmd = ['tar', '--dereference', '-czvf', 'dist/%s' % _TAR_FILE_]
@@ -69,4 +69,5 @@ def do_deploy(c):
         # c.sudo('chown -R www-data:www-data %s' % newdir, password='yy123456')
         c.sudo('supervisorctl stop awesome', password='yy123456')
         c.sudo('supervisorctl start awesome', password='yy123456')
+        # 不应该每次deploy都重启nginx
         c.sudo('nginx -s reload', password='yy123456')
