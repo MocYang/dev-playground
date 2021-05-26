@@ -8,6 +8,7 @@ const Main = () => {
       <Link to={'/'} className={'nav'}>#</Link>
       <Link to={'/pure_component'} className={'nav'}>React.PureComponents</Link>
       <Link to={'/memo'} className={'nav'}>React.memo</Link>
+      <Link to={'/forward_ref'} className={'forward_ref'}>React.forwardRef</Link>
       {/*<Link to={'/lazyload_js'} className={'nav'}>lazyload.js</Link>*/}
       {/*<Link to={'/circle-animate'} className={'nav'}>护眼动画</Link>*/}
     </div>

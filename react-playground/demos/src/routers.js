@@ -10,6 +10,7 @@ import PageHome from './pages/Main'
 // import PageCircleAnimate from './pages/circle-animate'
 import TestPureComponent from './components/PureComponent'
 import TestMemo from './components/memo'
+import ForwardedButton from './components/forwardRef'
 const App = () => {
   return (
     <Router>
@@ -30,6 +31,10 @@ const App = () => {
 
       <Route exact path={'/memo'}>
         <TestMemo />
+      </Route>
+
+      <Route exact path={'/forward_ref'}>
+        <ForwardedButton />
       </Route>
     </Router>
   )
