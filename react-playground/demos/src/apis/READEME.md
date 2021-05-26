@@ -340,7 +340,74 @@ react@17.0.3
    
     * lazy
     * Suspense 
+    React.lazy和Suspense配合一起用，能够有动态加载组件的效果。React.lazy 接受一个函数，这个函数需要动态调用 import()。它必须返回一个 Promise ，该 Promise 需要 resolve 一个 default export 的 React 组件。
+    
+    ```javascript
+    import React from 'react'
+    import Test from "./Test";
+    
+    const LazyTest = React.lazy(() => new Promise((resolve => {
+      setTimeout(() =>{
+        resolve({
+          default: () => <Test />
+        })
+      }, 2000)
+    })))
+    
+    const LazyComponent = () => {
+      return (
+        <div>
+          <React.Suspense fallback={<div>spinning</div>}>
+            <LazyTest />
+          </React.Suspense>
+        </div>
+      )
+    }
+    
+    export default LazyComponent
+ 
+    // Test
+     const Test = () => {
+       useEffect(() => {
+         console.log(' Test Component did mount.')
+       }, [])
+       return (
+         <div>
+           <h1>Test Component</h1>
+         </div>
+       )
+     }
+  
+    // 官方示例
+    // This component is loaded dynamically
+     const OtherComponent = React.lazy(() => import('./OtherComponent'));
+     
+     function MyComponent() {
+       return (
+         // Displays <Spinner> until OtherComponent loads
+         <React.Suspense fallback={<Spinner />}>
+           <div>
+             <OtherComponent />
+           </div>
+         </React.Suspense>
+       );
+     }
+    ```
+    
     * Fragment
+    The React.Fragment component lets you return multiple elements in a render() method without creating an additional DOM element:
+    ```javascript
+    render() {
+      return (
+        <React.Fragment>
+          Some text.
+          <h2>A heading</h2>
+        </React.Fragment>
+      );
+    }
+    ```
+    You can also use it with the shorthand <></> syntax. For more information, see React v16.2.0: Improved Support for Fragments.
+    
     * Profiler
     * StrictMode
     

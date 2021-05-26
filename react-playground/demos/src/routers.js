@@ -11,6 +11,7 @@ import PageHome from './pages/Main'
 import TestPureComponent from './components/PureComponent'
 import TestMemo from './components/memo'
 import ForwardedButton from './components/forwardRef'
+import LazyComponent from './components/lazy/index'
 const App = () => {
   return (
     <Router>
@@ -35,6 +36,10 @@ const App = () => {
 
       <Route exact path={'/forward_ref'}>
         <ForwardedButton />
+      </Route>
+
+      <Route exact path={'/lazy_suspense'}>
+        <LazyComponent />
       </Route>
     </Router>
   )
