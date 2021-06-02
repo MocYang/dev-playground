@@ -12,6 +12,8 @@ import TestPureComponent from './components/PureComponent'
 import TestMemo from './components/memo'
 import ForwardedButton from './components/forwardRef'
 import LazyComponent from './components/lazy/index'
+import UseEffectAsync from './components/hooks/useEffectAsync'
+import InputDebounce from './pages/input_debounce/Input_Debounce'
 const App = () => {
   return (
     <Router>
@@ -40,6 +42,14 @@ const App = () => {
 
       <Route exact path={'/lazy_suspense'}>
         <LazyComponent />
+      </Route>
+
+      <Route exact path={'/useEffect'}>
+        <UseEffectAsync />
+      </Route>
+
+      <Route exact path={'/input_debounce'}>
+        <InputDebounce />
       </Route>
     </Router>
   )

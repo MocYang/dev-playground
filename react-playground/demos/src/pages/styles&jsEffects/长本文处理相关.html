@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>长文本处理</title>
+
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+
+    .container {
+      height: 100vh;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      margin-left: 50px;
+      border: 1px solid white;
+    }
+
+    .box-1 {
+      overflow-wrap: normal;
+    }
+
+    .box-2 {
+      overflow-wrap: break-word;
+    }
+    
+    .box-3 {
+      hyphens: auto;
+    }
+    
+    .box-4 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .box-5 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      height: 3.6em;
+    }
+    
+    .box-6 {
+      width: 400px;
+      height: 8em;
+      /*safari 下无效*/
+      /*white-space: nowrap;*/
+      /*overflow: hidden;*/
+      /*text-overflow: ellipsis;*/
+
+     
+    }
+    
+    .box-6 p {
+      white-space: normal;
+      overflow : hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+    
+    .box-6  span {
+      display: inline-block;
+      background: purple;
+      border-radius: 5px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="box box-1">
+    <span>默认: 字符太长,溢出了容器.</span>
+    adfj;l asdfa asdfasdf
+    asdfasdfasdfasdfaasdfasdf12424523
+    asdfasdfadsf asdfasdfsdf
+  </div>
+
+
+  <div class="box box-2">
+    <span>超出部分换行. overflow: break-word;</span>
+    adfj;l asdfa asdfasdf
+    asdfasdfasdfasdfaasdfasdf12424523
+    asdfasdfadsf asdfasdfsdf
+  </div>
+
+  <div class="box box-3">
+    <span>超出部分使用连字符. hyphens: auto;</span>
+    adfj;l asdfa asdfasdf
+    asdfasdfasdfasdfaasdfasdf12424523
+    asdfasdfadsf asdfasdfsdf
+  </div>
+
+  <div class="box box-4">
+    <span>单行文本超出省略.</span>
+    adfj;l asdfa asdfasdfasdfadsf
+    asdfasdfasdfasdfaasdfasdf12424523
+    asdfasdfadsf asdfasdfsdf
+  </div>
+
+  <div class="box box-5">
+    <span>多行文本超出省略.</span>
+    adfj;l asdfa asdfasdfasdfadsf asdfasdfasdfasdfaasdfasdf12424523 asdfasdfadsf asdfasdfsdfasdffsdfasdfasdfasdfasdfadsfadsfasdfasdfaadsfasdfadfadfasdfasdfasdfasdfasdfadsf
+  </div>
+  
+  <div class="box box-6">
+<!--    <p>基于整块内容的溢出.</p>-->
+    <p>
+      <span>FE</span>
+      <span>UI</span>
+      <span>REACT</span>
+      <span>VUE</span>
+      <span>REACT-NATIVE</span>
+      <span>REACT-REDUX</span>
+    </p>
+  </div>
+</div>
+</body>
+</html>
