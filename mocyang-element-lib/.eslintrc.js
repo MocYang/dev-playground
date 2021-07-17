@@ -17,6 +17,7 @@ module.exports = {
     "prettier/prettier": "warn",
     // ReactV17+ 已经不需要显示 import React 了。所以关闭对 React import 的规则检测。
      "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/no-children-prop": "off"
   }
 }

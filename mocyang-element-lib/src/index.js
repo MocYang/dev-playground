@@ -8,20 +8,20 @@ import reportWebVitals from './reportWebVitals'
 import './index.css'
 
 ReactDOM.render(
-  <Provider store={ store }>
+  <Provider store={store}>
     <Router>
       <ul className="nav">
-        <li className={ 'nav_link' }>
-          <Link to={ '/' }>Home</Link>
+        <li className={'nav_link'}>
+          <Link to={'/'}>Home</Link>
         </li>
-        <li className={ 'nav_link' }>
-          <Link to={ '/blog' }>blog</Link>
+        <li className={'nav_link'}>
+          <Link to={'/blog'}>blog</Link>
         </li>
-        <li className={ 'nav_link' }>
-          <Link to={ '/about' }>about</Link>
+        <li className={'nav_link'}>
+          <Link to={'/about'}>about</Link>
         </li>
       </ul>
-      <App/>
+      <App />
     </Router>
   </Provider>,
   document.getElementById('root')

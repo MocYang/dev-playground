@@ -2,7 +2,7 @@ import './App.css'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App page__container">
       <header className="App-header">
         <h1>Home</h1>
       </header>

@@ -20,11 +20,15 @@ code {
 }
 
 .page__container {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+  z-index: 0;
 }
 
 ul,
@@ -52,21 +56,74 @@ li {
   background: blue;
 }
 
-.fade-enter {
-  opacity: 0;
+.App {
+  background: #282c34;
 }
 
-.fade-enter-active {
+/*.fade-enter {*/
+/*  opacity: 0;*/
+/*  z-index: -1;*/
+/*}*/
+
+/*.fade-enter-active {*/
+/*  opacity: 1;*/
+/*  transition: all 1000ms;*/
+/*  z-index: -1;*/
+/*}*/
+
+/*.fade-enter-done {*/
+/*  z-index: 11;*/
+/*  opacity: 1;*/
+/*}*/
+
+/*.fade-exit {*/
+/*  opacity: 1;*/
+/*  z-index: 9;*/
+/*}*/
+
+/*.fade-exit-active {*/
+/*  z-index: 9;*/
+/*  opacity: 1;*/
+/*  transition: all 1000ms;*/
+/*}*/
+
+/*.fade-exit-done {*/
+/*  z-index: -1;*/
+/*  opacity: 0;*/
+/*}*/
+
+/**
+ * 打开页面：右侧淡入，右侧淡出
+ */
+.forward-from-right-enter {
+  z-index: 0;
+  /*transform: translate3d(100%, 0, 0);*/
   opacity: 1;
-  transition: opacity 2000ms;
 }
 
-.fade-exit {
+.forward-from-right-enter-active {
+  z-index: 99;
+  /*transform: translate3d(0, 0, 0);*/
+  transition: all 1000ms;
   opacity: 1;
 }
 
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 2000ms;
+.forward-from-right-enter-done {
 }
 
+.forward-from-right-exit {
+  /*transform: translate3d(0, 0, 0);*/
+  opacity: 1;
+  z-index: 99;
+}
+
+.forward-from-right-exit-active {
+  /*transform: translate3d(-100%, 0, 0);*/
+  transition: all 1000ms;
+  opacity: 0;
+  z-index: 0;
+}
+
+.forward-from-right-exit-done {
+
+}
