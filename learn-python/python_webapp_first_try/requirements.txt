@@ -5,7 +5,7 @@ attrs==19.3.0
 bcrypt==3.1.7
 cffi==1.14.1
 chardet==3.0.4
-cryptography==3.0
+cryptography==3.3.2
 fabric==2.5.0
 idna==2.10
 invoke==1.4.1
