@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>向量和坐标系</title>
+  <link rel="stylesheet" href="../asserts/styles/style.css" />
+  <script src="../asserts/js/utils.js"></script>
+</head>
+<body>
+<script>
+  Utils.initCanvas({
+    container: 'body',
+    showOrigin: true
+  })
+  let ctx = Utils.getContext2d()
+  let [width, height] = Utils.getRect()
+
+  // 进行坐标变换 -> 左下角
+  Utils.translate(['left', 'bottom'])
+  ctx.lineCap = 'round'
+
+  class Vector2D {
+    constructor(x, y) {
+      this.x = x
+      this.y = y
+    }
+
+    add(v) {
+      const x = this.x
+      const y = this.y
+      return new Vector2D(v.x + x, v.y + y)
+    }
+
+    copy() {
+      return new Vector2D(this.x, this.y)
+    }
+
+    rotate(rad) {
+      const c = Math.cos(rad)
+      const s = Math.sin(rad)
+      const x = this.x
+      const y = this.y
+
+      /* 根据二角和差公式
+    sin(a + b) = sina * cos b + cos a * sin b
+    sin(a - b) = sin a * cos b - cos a * sin b
+    cos(a + b) = cos a * cos b - sin a * sin b
+    cos(a - b) = cos a * cos b + sin a * sin b
+   */
+      this.x = x * c + y * -s
+      this.y = x * s + y * c
+      return this
+    }
+
+    // 向量(x0, y0) 沿当前方向，平移指定长度 length 后的值
+    scale(length) {
+      const x0 = this.x
+      const y0 = this.y
+      const d = Utils.getVertexDistance(x0, y0)
+      this.x = x0 / d * (d + length)
+      this.y = y0 / d * (d + length)
+      return this
+    }
+  }
+
+  function drawBranch(v0, length, thickness, dir, bias) {
+    const v = new Vector2D(1, 0).rotate(dir).scale(length)
+    const v1 = v0.copy().add(v)
+
+    ctx.save()
+    ctx.strokeStyle = '#000000'
+    ctx.lineWidth = thickness
+    ctx.beginPath()
+    ctx.moveTo(v0.x, v0.y)
+    ctx.lineTo(v1.x, v1.y)
+    ctx.stroke()
+    ctx.restore()
+
+    // 根据树枝的粗细来判断都否不需要再继续生成了
+    if (thickness > 2) {
+      const leftRad = dir + Math.random() * Utils.angleToRad(bias)
+      const rightRad = dir - Math.random() * Utils.angleToRad(bias)
+      thickness *= 0.8
+      length *= 0.9
+      bias *= 0.9
+      drawBranch(v1, length, thickness, leftRad, bias)
+      drawBranch(v1, length, thickness, rightRad, bias)
+    }
+  }
+
+  drawBranch(
+    new Vector2D(width / 2, 0),
+    100,
+    10,
+    Utils.angleToRad(90),
+    45
+  )
+</script>
+</body>
+</html>

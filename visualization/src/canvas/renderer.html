@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>基于 canvas 的渲染器</title>
+  <link rel="stylesheet" href="../asserts/styles/style.css">
+  <script src="../asserts/js/utils.js?opt=111"></script>
+</head>
+<body>
+
+<script>
+  Utils.initCanvas({
+    container: 'body',
+    showOrigin: true
+  })
+  let ctx = Utils.getContext2d()
+  let [width, height] = Utils.getRect()
+  let canvasElement = Utils.getCanvasElement()
+  Utils.translate(['center', 'center'])
+
+  Utils.on(canvasElement, 'click', (e) => {
+    console.log(e.x, e.y)
+  })
+
+  Utils.on(canvasElement, 'mousewheel', e => {
+    console.log(e.e.wheelDelta)
+  })
+
+</script>
+</body>
+</html>

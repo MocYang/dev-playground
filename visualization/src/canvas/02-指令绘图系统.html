@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../asserts/styles/style.css">
+  <script src="../asserts/js/utils.js"></script>
+  <script src="../asserts/js/d3-hierarchy@3.js"></script>
+</head>
+<body>
+<script src="../asserts/js/fetchCitiesAndParse.js"></script>
+<script>
+  Utils.initCanvas('body')
+  let $canvas = Utils.getCanvasElement()
+  let ctx = Utils.getContext2d()
+
+  console.log(width, height);
+  // 绘制一个矩形，在画布的中心点.
+  // 方法一：通过计算，设置矩形的起点的位置
+  // ctx.fillStyle = 'red'
+  // ctx.beginPath()
+  // ctx.rect(0.5 * (width - rectWidth) , 0.5 * (height - rectHeight), rectWidth, rectHeight)
+  // ctx.fill()
+
+  // 方法二： 通过平移
+  // ctx.save()
+  // ctx.translate(-1 * 0.5 * rectWidth, -1 * 0.5 * rectHeight)
+  // ctx.beginPath()
+  // ctx.rect(0.5 * width, 0.5 * height, rectWidth, rectHeight)
+  // ctx.fill()
+  // ctx.restore()
+
+  // 绘制城市的层次结构关系图
+  const ARC = 2 * Math.PI
+
+  fetchCitiesData(Utils.getRect(), (root, ) => {
+    drawStage(root)
+
+    // 添加鼠标事件，判断当前鼠标移入的是哪个圆，并修改这个圆的描边颜色
+    $canvas.addEventListener('mousemove', e => {
+      let mouseX = e.offsetX
+      let mouseY = e.offsetY
+      // console.log(mouseX, mouseY)
+      let activeNode = [] // 鼠标进入的圆的数组
+
+      let mousePoint = {x: mouseX, y: mouseY}
+      function isCircleActive(node) {
+        let distance = getDistance(mousePoint, {x: node.x, y: node.y})
+        let isMouseInThisCircle = isInCircle(distance, node.r)
+        if (isMouseInThisCircle) {
+          activeNode.push(node)
+        }
+        node.active = false
+
+        let children = node.children
+        if(children) {
+          children.forEach(child => {
+            isCircleActive(child)
+          })
+        }
+      }
+
+      isCircleActive(root)
+
+      if (activeNode.length > 0) {
+        activeNode[activeNode.length - 1].active = true
+      }
+
+      // console.log(activeNode)
+      drawStage(root)
+    })
+  })
+
+  function drawStage(node) {
+    clearStage()
+    draw(ctx, node)
+  }
+
+  // 当前点是否小于圆的半径，以此判定鼠标是否在某个圆内
+  function isInCircle(distance, radius) {
+    return distance <= radius
+  }
+
+  function clearStage() {
+    ctx.clearRect(0, 0, width, height)
+  }
+
+  function draw(ctx, node) {
+
+    const children = node.children
+
+    drawCircle(ctx, node)
+
+    if (children) {
+      drawText(ctx, node, {textColor: 'red'})
+      for (let i = 0; i < children.length; i++) {
+        draw(ctx, children[i])
+      }
+    } else {
+      drawText(ctx, node)
+    }
+  }
+
+  function drawCircle(ctx, node, styles = { fillStyle: 'rgba(0, 0, 0, 0.2)' }) {
+    const { x, y, r } = node
+    ctx.save()
+    ctx.fillStyle = styles.fillStyle
+    ctx.beginPath()
+    ctx.arc(x, y, r, 0, ARC)
+    ctx.fill()
+    ctx.closePath()
+    ctx.restore()
+  }
+
+  function drawText(ctx, node, styles = { textColor: 'black' }) {
+    const name = node?.data?.name
+    const { x, y, active } = node
+    if (name) {
+      ctx.beginPath()
+      ctx.save()
+      ctx.fillStyle = active ? 'blue' : styles.textColor
+      ctx.font = active ? '12px Arial' : '6px Arial'
+      ctx.textAlign = 'center'
+      ctx.fillText(name, x, y)
+      ctx.restore()
+      ctx.closePath()
+    }
+  }
+
+  function getDistance(start, end) {
+    return Math.sqrt(Math.pow(start.x - end.x, 2) + Math.pow(start.y - end.y, 2))
+  }
+</script>
+</body>
+</html>
