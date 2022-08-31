@@ -18,14 +18,14 @@ function Index() {
     <TransitionGroup mode={'out-in'}>
       <CSSTransition
         key={location.key}
-        classNames="forward-from-right"
+        classNames="fade"
         timeout={1000}
         in={true}
       >
         <Switch location={location}>
-          <Route exact path="/" children={() => <App />} />
-          <Route exact path="/blog" children={() => <Blog />} />
-          <Route exact path="/about" children={() => <About />} />
+          <Route exact path="/" render={() => <App/>}/>
+          <Route exact path="/blog" render={() => <Blog/>}/>
+          <Route exact path="/about" render={() => <About/>}/>
         </Switch>
       </CSSTransition>
     </TransitionGroup>

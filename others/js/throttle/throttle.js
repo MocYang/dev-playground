@@ -48,7 +48,7 @@ function throttle (func, wait, options) {
   var previous = 0
 
   options = options || {
-    leading: true, // 是否禁用第一次执行
+    leading: false, // 是否禁用第一次执行
     trailing: true // 是否禁用最后一次回调
   }
 
