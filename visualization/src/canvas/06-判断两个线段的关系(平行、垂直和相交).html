@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>点和线段的向量表示</title>
+  <link rel="stylesheet" href="../asserts/styles/style.css">
+  <script src="../asserts/js/utils.js"></script>
+</head>
+<body>
+
+<script>
+  Utils.initCanvas({
+    container: 'body',
+    showOrigin: true,
+    showAxis: false
+  })
+  let ctx = Utils.getContext2d()
+  let [width, height] = Utils.getRect()
+
+  // 进行坐标变换 -> 左下角
+  Utils.translate(['center', 'center'])
+  ctx.lineCap = 'round'
+
+  Utils.on(Utils.getCanvasElement(), 'click', (res) => {
+    console.log(res)
+
+    // new Utils.Point({
+    //   ctx,
+    //   x: res.x,
+    //   y: res.y,
+    //   fillStyle: 'blue',
+    //   radius: 2
+    // }).draw()
+  })
+
+  const lineArray = [
+    // 平行
+    [
+      [[-100, 100], [100, 100]],
+      [[-100, 50], [100, 50]]
+    ],
+    [
+      [[-100, 120], [0, 120]],
+      [[50, 120], [100, 120]]
+    ],
+    // 垂直
+    [
+      [[-100, -100], [100, -100]],
+      [[120, 0], [120, -50]]
+    ],
+
+    [
+      [[-200, 0], [-100, 0]],
+      [[-150, 0], [-150, -100]]
+    ],
+
+    [
+      [[200, 0], [300, 0]],
+      [[250, 100], [250, -100]]
+    ],
+
+    // 其它
+    [
+      [[-200, -200], [200, -200]],
+      [[-200, -100], [200, -350]]
+    ]
+  ]
+
+  for (let lineGroup of lineArray) {
+    let lineArrays = []
+
+    for (let lineArray of lineGroup) {
+      let start = lineArray[0]
+      let end = lineArray[1]
+      let line = new Utils.Line({
+        ctx,
+        lineWidth: 1,
+        start: new Utils.Point({
+          ctx,
+          x: start[0],
+          y: start[1]
+        }),
+        end: new Utils.Point({
+          ctx,
+          x: end[0],
+          y: end[1]
+        })
+      })
+      line.draw()
+
+      lineArrays.push(line)
+    }
+
+    lineRelations(lineArrays[0], lineArrays[1])
+  }
+
+  // 判断两个向量的位置关系
+  function lineRelations(l1, l2) {
+    const v1 = l1.toVector()
+    const v2 = l2.toVector()
+    const [k1, b1] = l1.getFormula()
+    const [k2, b2] = l2.getFormula()
+
+    console.log('')
+    if (v1.x * v2.x + v1.y * v2.y === v1.length * v2.length) {
+      console.log(`平行`)
+    } else {
+      let crossX
+      let crossY
+      if (v1.x * v2.x + v1.y * v2.y === 0) {
+        console.log(`垂直`)
+        // 垂直也分两种情况，相交和不相交
+        // 1. 当两个向量分别平行轴线时，是特殊情况
+        // k1 平行 y 轴 , k2 平行 x 轴
+        if ((k1 === 1) && (k2 === 0)) {
+          crossX = -b1
+          crossY = b2
+
+          // k1 平行 x 轴 , k2 平行 y 轴
+        } else if ((k1 === 0) && (k2 === 1)) {
+          crossX = -b2
+          crossY = b1
+
+          // 一般相交的情况
+        } else {
+          if ((k1 - k2) !== 0) {
+            crossX = (b2 - b1) / (k1 - k2)
+            crossY = k1 * crossX + b1
+          }
+        }
+      } else {
+        // 一般的情况
+        if (k1 - k2 !== 0) {
+          // 求交点
+          crossX = (b2 - b1) / (k1 - k2)
+          crossY = k1 * crossX + b1
+        }
+      }
+
+      // 判断交点是否同时在两条直线上
+      const x1Min = Math.min(l1.start.x, l1.end.x)
+      const x1Max = Math.max(l1.start.x, l1.end.x)
+
+      const y1Min = Math.min(l1.start.y, l1.end.y)
+      const y1Max = Math.max(l1.start.y, l2.end.y)
+
+      const x2Min = Math.min(l2.start.x, l2.end.x)
+      const x2Max = Math.max(l2.start.x, l2.end.x)
+
+      const y2Min = Math.min(l2.start.y, l2.end.y)
+      const y2Max = Math.max(l2.start.y, l2.end.y)
+
+      if (
+        crossX >= x1Min &&
+        crossX <= x1Max &&
+
+        crossY >= y1Min &&
+        crossY <= y1Max &&
+
+        crossX >= x2Min &&
+        crossX <= x2Max &&
+
+        crossY >= y2Min &&
+        crossY <= y2Max
+      ) {
+        console.log(`相交：(${crossX}, ${crossY})`)
+      }
+    }
+
+  }
+</script>
+</body>
+</html>

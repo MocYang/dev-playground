@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG demo</title>
+  <link rel="stylesheet" href="../asserts/styles/style.css">
+  <script src="../asserts/js/utils.js"></script>
+  <script src="../asserts/js/d3-hierarchy@3.js"></script>
+</head>
+<body>
+<!--<svg xlmns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 781 789">-->
+<!--  <circle cx="100" cy="100" r="40" stroke="black" stroke-width="2" fill="orange"></circle>-->
+<!--  <text x="443" y="394.5" font-family="Arial" font-size="6px" text-anchor="middle" fill="red">-->
+<!--    Hello, out there-->
+<!--  </text>-->
+<!--</svg>-->
+<script src="../asserts/js/fetchCitiesAndParse.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+
+    const $svg = Utils.getSvgElement()
+    // const $circle = Utils.createElement({
+    //   type: 'SVG',
+    //   name: 'circle',
+    //   props: {
+    //     'cx': 100,
+    //     cy: 100,
+    //     r: 40,
+    //     stroke: 'black',
+    //     "stroke-width": 2,
+    //     fill: 'orange'
+    //   }
+    // })
+    //
+    // $svg.appendChild($circle)
+
+    fetchCitiesData(Utils.getRect(), (root) => {
+      console.log(root)
+      drawStage(root)
+      let activeTarget = null
+
+      $svg.addEventListener('mousemove', e => {
+        let target = e.target
+        let textNode = null
+        if (target.nodeName === 'svg') {
+          target = target.querySelector('g')
+          textNode = target.querySelector('text')
+          textNode.setAttribute('fill', 'black')
+          textNode.setAttribute('font-size', '6')
+        } else if (target.nodeName === 'circle' || target.nodeName === 'text') {
+          target = target.parentNode
+          textNode = target.querySelector('text')
+
+          if (activeTarget !== textNode) {
+            if (activeTarget) {
+              activeTarget.setAttribute('fill', 'black')
+              activeTarget.setAttribute('font-size', '6')
+            }
+          }
+          textNode.setAttribute('fill', 'blue')
+          textNode.setAttribute('font-size', '12')
+        }
+        activeTarget = textNode
+      })
+    })
+
+
+    function drawStage(node) {
+      // clearStage()
+      draw($svg, node)
+    }
+
+    function clearStage() {
+      $svg.removeChild()
+    }
+
+    function draw($parent, node) {
+      const children = node.children
+
+      let $sub = Utils.createElement({
+        type: 'SVG',
+        name: 'g'
+      })
+
+      drawCircle($sub, node)
+
+      if (children) {
+        let $subParent = Utils.createElement({
+          type: 'SVG',
+          name: 'g'
+        })
+        drawText($sub, node, {textColor: 'red'})
+        for (let i = 0; i < children.length; i++) {
+          draw($subParent, children[i])
+        }
+        $sub.appendChild($subParent)
+      } else {
+        drawText($sub, node)
+      }
+      $parent.appendChild($sub)
+    }
+
+    function drawCircle($parent, node) {
+      let { x, y, r} = node
+      let $circle = Utils.createElement({
+        type: 'SVG',
+        name: 'circle',
+        props: {
+          'cx': x,
+          'cy': y,
+          'r': r,
+          'fill': 'rgba(0, 0, 0, 0.2)'
+        }
+      })
+
+      $parent.appendChild($circle)
+    }
+
+    function drawText($parent, node, styles = {textColor: 'black'}) {
+      let {x, y} = node
+      let $text = Utils.createElement({
+        type: 'SVG',
+        name: 'text',
+        props: {
+          x,
+          y,
+          'font-family': 'Arial',
+          'font-size': '6',
+          'text-anchor': 'middle',
+          'fill': styles.textColor
+        }
+      })
+      $text.textContent = node.data.name
+      $parent.appendChild($text)
+    }
+  })
+</script>
+</body>
+</html>
